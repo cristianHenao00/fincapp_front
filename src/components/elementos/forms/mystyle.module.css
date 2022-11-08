@@ -1,0 +1,21 @@
+.btnPrimary {
+    margin: 10px;
+    font-size: 12px;
+    width: 100px;
+    height: 50px;
+    padding: 5px;
+    background: #1acae9;
+    color: #fff;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+}
+.btnPrimary:hover {
+    background: #0b7183;
+    color: #fff;
+    transition: 0.5s;
+}
+.btnPrimary:focus {
+    box-shadow: 0 0 0 5px rgba(0, 85, 255, 0.5)
+}
