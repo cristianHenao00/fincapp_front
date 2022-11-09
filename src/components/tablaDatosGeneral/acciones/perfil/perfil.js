@@ -10,11 +10,11 @@ import {
 
 import createNotification from '../../../notificaciones/flotantes';
 import Formulario from '../../../formularios/perfiles/cruds';
-import { eliminarPerfil, ModulosPerfil } from '../../../../services/perfil';
+import { eliminarPerfil, modulosPerfil } from '../../../../services/perfil';
 import ChecklistPerfil from './checklist';
 
 const AccionPerfil = ({ cell, titulo, funcionListar }) => {
-  const [modulosPerfil, setModulosPerfil] = useState();
+  const [modulosPerfilState, setModulosPerfil] = useState();
 
   const [modalBasic, setModalBasic] = useState(false);
   const [modalLarge, setModalLarge] = useState(false);
@@ -46,7 +46,7 @@ const AccionPerfil = ({ cell, titulo, funcionListar }) => {
 
   const MagnetButton = () => {
     setModalAsignar(true);
-    ModulosPerfil(cell.data[cell.row.index].id)
+    modulosPerfil(cell.data[cell.row.index].id)
       .then((response) => setModulosPerfil(response.data))
       .catch((response) => console.log(response));
   };
@@ -175,7 +175,7 @@ const AccionPerfil = ({ cell, titulo, funcionListar }) => {
         </ModalHeader>
         <ModalBody>
           <ChecklistPerfil
-            modulos={modulosPerfil}
+            modulos={modulosPerfilState}
             idp={cell.data[cell.row.index].id}
           />
         </ModalBody>

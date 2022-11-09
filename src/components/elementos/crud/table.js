@@ -1,10 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/display-name */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
+/* eslint-disable */
 import React, { useMemo } from 'react';
 import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
 import { Card, CardBody, CardTitle, Row, Button } from 'reactstrap';

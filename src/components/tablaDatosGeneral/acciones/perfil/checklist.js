@@ -10,8 +10,8 @@ import {
 } from 'reactstrap';
 import { Colxx } from '../../../common/CustomBootstrap';
 import {
-  AgregarModuloPerfil,
-  EliminarModuloPerfil,
+  agregarModuloPerfil,
+  eliminarModuloPerfil,
 } from '../../../../services/perfil';
 
 const ChecklistPerfil = (props) => {
@@ -20,12 +20,12 @@ const ChecklistPerfil = (props) => {
   const checked = (e, idP, idm) => {
     const isChecked = e.target.checked;
     if (isChecked === true) {
-      AgregarModuloPerfil(idP, idm)
+      agregarModuloPerfil(idP, idm)
         .then((response) => console.log('se agrego', response))
         .catch((response) => console.log(response));
     }
     if (isChecked === false) {
-      EliminarModuloPerfil(idP, idm)
+      eliminarModuloPerfil(idP, idm)
         .then((response) => console.log('se elimino', response))
         .catch((response) => console.log(response));
     }

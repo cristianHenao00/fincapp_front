@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import configure from '../../../components/cruds/menu/configure';
+import configure from '../../../components/cruds/configuration/menu.configure';
 import listarMenus from '../../../services/menu';
 import getData from '../../../components/cruds/arrangeData';
 import Table from '../../../components/elementos/crud/table';
 
-const Menu = () => {
+const Menu = ({ match }) => {
   const [data, setData] = useState({});
   const newData = getData(setData, listarMenus, data, configure.accessor);
 
@@ -19,6 +19,8 @@ const Menu = () => {
           actions={configure.actions}
           setCreate={configure.setCreate}
           formCreate={configure.formCreate}
+          name={configure.name}
+          match={match}
         />
       )}
     </>

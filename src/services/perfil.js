@@ -15,10 +15,10 @@ export const eliminarPerfil = (id) =>
   axios.delete(`${baseUrl}/perfiles/${id}`, { headers });
 export const buscarPerfil = (id) =>
   axios.get(`${baseUrl}/perfiles/${id}`, { headers });
-export const ModulosPerfil = (id) =>
+export const modulosPerfil = (id) =>
   axios.get(`${baseUrl}/mpp/obtenerModulos/perfil/${id}`, { headers });
 
-export const AgregarModuloPerfil = async (idp, idm) => {
+export const agregarModuloPerfil = async (idp, idm) => {
   const body = {
     perfilId: idp,
     moduloId: idm,
@@ -30,7 +30,7 @@ export const AgregarModuloPerfil = async (idp, idm) => {
     console.log('sucess peticion enviada');
   }
 };
-export const EliminarModuloPerfil = async (idp, idm) => {
+export const eliminarModuloPerfil = async (idp, idm) => {
   try {
     const res = await axios.delete(`${baseUrl}/mpp/eliminarmpp/${idp}-${idm}`, {
       headers,
