@@ -1,11 +1,10 @@
 import React from 'react';
-import Create from '../../formulariosElementos/usuarios/create';
-import Read from '../../formulariosElementos/usuarios/read';
-import Update from '../../formulariosElementos/usuarios/update';
+import FormularioUsuarios from '../../formularios/cruds/usuarios.crud';
 import Actions from '../../elementos/forms/actions';
-import DeleteForm from '../../formulariosElementos/delete';
+import DeleteForm from '../../elementos/crud/delete';
 import * as serviceUsuarios from '../../../services/usuarios';
 import * as Sets from '../Buttonset';
+import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = [
@@ -27,19 +26,21 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <Read
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioUsuarios
+        action={actions.READ}
         cell={cell}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <Update
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioUsuarios
+        action={actions.UPDATE}
         cell={cell}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
@@ -48,7 +49,7 @@ const forms = [
       <DeleteForm
         listFunction={listFunction}
         closeFunction={closeFunction}
-        title="Menu"
+        title="Usuario"
         cell={cell}
         service={serviceUsuarios.eliminarUsuario}
       />
@@ -56,16 +57,22 @@ const forms = [
   },
 ]; // conjunto de arrow funciones que llaman a formularios
 
-const actions = (cell) => {
+const actionsForm = (cell) => {
   return <Actions sets={Sets.sets} forms={forms} cell={cell} />;
 };
 
 const formCreate = (listFunction, closeFunction) => {
-  return <Create listFunction={listFunction} closeFunction={closeFunction} />;
+  return (
+    <FormularioUsuarios
+      action={actions.CREATE}
+      closeFunction={closeFunction}
+      listFunction={listFunction}
+    />
+  );
 };
 
 const { setCreate, sets } = Sets;
-setCreate.title = 'Crear menu';
+setCreate.title = 'Crear usuario';
 
 const configure = {
   headers,
@@ -73,7 +80,7 @@ const configure = {
   size,
   sets,
   forms,
-  actions,
+  actionsForm,
   setCreate,
   formCreate,
   name: 'Usuarios',

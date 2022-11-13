@@ -96,7 +96,7 @@ function* loginWithEmailPassword({ payload }) {
             "fechaCreacion":1576126800000,
             "fechaActualizacion":1576126800000,
             "accionVer":true,
-            "accionCrear":false,
+            "accionCrear":true,
             "accionActualizar":false,
             "accionEliminar":false
           },

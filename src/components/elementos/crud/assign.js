@@ -4,9 +4,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Card, CardBody } from 'reactstrap';
 import { useForm, useFieldArray } from 'react-hook-form';
-import IntlMessages from '../../helpers/IntlMessages';
-import CheckList from '../elementos/forms/checkList';
-import getData from '../cruds/arrangeData';
+import IntlMessages from '../../../helpers/IntlMessages';
+import CheckList from '../forms/checkList';
+import getData from '../../cruds/arrangeData';
 
 /**
  *

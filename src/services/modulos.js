@@ -13,6 +13,8 @@ const Modulos = getCurrentUser().modulo;
 
 export const listarModulos = () => axios.get(`${urlBase}/modulos`, { headers });
 
+export const obtenerModulo = () => axios.get(`${urlBase}/modulos`, { headers });
+
 export const crearModulo = (props) => {
   const { body } = props;
   return axios.post(`${urlBase}/modulos/crear`, body, { headers });

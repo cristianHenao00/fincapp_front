@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Button } from 'reactstrap';
-import handlerSN from '../elementos/crud/handlerSN';
+import handlerSN from './handlerSN';
 
 /**
  *

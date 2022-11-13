@@ -36,7 +36,6 @@ const processing = (data, accessor) => {
  * @returns  Data organizada
  */
 const getData = (setter, service, data, accessor, props = {}) => {
-  console.log('data', data, 'service', service);
   if (Object.keys(data).length === 0) {
     handlerData(setter, service, props);
   }

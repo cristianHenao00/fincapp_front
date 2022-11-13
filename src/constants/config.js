@@ -60,3 +60,10 @@ export const colors = [
 ];
 
 export const urlBase = 'http://localhost:3333/api/v1';
+
+export const actions = {
+  CREATE: 'create',
+  READ: 'read',
+  UPDATE: 'update',
+  DELETE: 'delete',
+};

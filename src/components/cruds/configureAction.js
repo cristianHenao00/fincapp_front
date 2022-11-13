@@ -1,5 +1,6 @@
 import React from 'react';
 import Actions from '../elementos/forms/actions';
+import { actions } from '../../constants/config';
 
 const ConfigureAction = (configure, menu) => {
   /** Determina que acciones se muestran dependiendo de la configuración del menu */
@@ -7,19 +8,19 @@ const ConfigureAction = (configure, menu) => {
   const forms = [];
   configure.sets.forEach((s, i) => {
     switch (s.title) {
-      case 'ver':
+      case actions.READ:
         if (menu.accionVer) {
           sets.push(configure.sets[i]);
           forms.push(configure.forms[i]);
         }
         break;
-      case 'actualizar':
+      case actions.UPDATE:
         if (menu.accionActualizar) {
           sets.push(configure.sets[i]);
           forms.push(configure.forms[i]);
         }
         break;
-      case 'eliminar':
+      case actions.DELETE:
         if (menu.accionEliminar) {
           sets.push(configure.sets[i]);
           forms.push(configure.forms[i]);
@@ -33,11 +34,11 @@ const ConfigureAction = (configure, menu) => {
   });
 
   /** Asigancion entre el listado de formularios y el de botones */
-  const actions = (cell) => {
+  const assignActions = (cell) => {
     return <Actions sets={sets} forms={forms} cell={cell} />;
   };
 
-  return actions;
+  return assignActions;
 };
 
 export default ConfigureAction;

@@ -1,11 +1,10 @@
 import React from 'react';
-import Create from '../../formulariosElementos/menu/create';
-import Read from '../../formulariosElementos/menu/read';
-import Update from '../../formulariosElementos/menu/update';
+import FormularioMenu from '../../formularios/cruds/menus.crud';
 import Actions from '../../elementos/forms/actions';
-import DeleteForm from '../../formulariosElementos/delete';
+import DeleteForm from '../../elementos/crud/delete';
 import * as serviceMenu from '../../../services/menu';
 import * as Sets from '../Buttonset';
+import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = ['id', 'Nombre', 'Descripción', 'Icono', 'Acciones'];
@@ -17,19 +16,21 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <Read
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioMenu
         cell={cell}
+        action={actions.READ}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <Update
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioMenu
         cell={cell}
+        action={actions.UPDATE}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
@@ -46,12 +47,18 @@ const forms = [
   },
 ]; // conjunto de arrow funciones que llaman a formularios
 
-const actions = (cell) => {
+const actionsForm = (cell) => {
   return <Actions sets={Sets.sets} forms={forms} cell={cell} />;
 };
 
 const formCreate = (listFunction, closeFunction) => {
-  return <Create listFunction={listFunction} closeFunction={closeFunction} />;
+  return (
+    <FormularioMenu
+      action={actions.CREATE}
+      closeFunction={closeFunction}
+      listFunction={listFunction}
+    />
+  );
 };
 
 const { setCreate, sets } = Sets;
@@ -63,7 +70,7 @@ const configure = {
   size,
   sets,
   forms,
-  actions,
+  actionsForm,
   setCreate,
   formCreate,
   name: 'Menus',

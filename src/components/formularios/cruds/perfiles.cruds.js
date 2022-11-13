@@ -10,8 +10,9 @@ import {
   actualizarPerfil,
 } from '../../../services/perfil';
 import createNotification from '../../notificaciones/flotantes';
+import { actions } from '../../../constants/config';
 
-const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
+const FormularioPerfiles = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -20,7 +21,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
   } = useForm();
 
   useEffect(() => {
-    if (accion === 'actualizar' || accion === 'ver') {
+    if (action === actions.UPDATE || action === actions.READ) {
       buscarPerfil(cell.data[cell.row.index].id)
         .then((response) => {
           reset(response.data);
@@ -30,7 +31,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
   }, []);
 
   const onSubmit = (data) => {
-    if (accion === 'crear') {
+    if (action === actions.CREATE) {
       crearPerfil(data)
         .then((response) => {
           createNotification(
@@ -39,7 +40,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
             `Se ha creado el modulo ${response.data.username}`,
             'filled'
           );
-          funcionListar();
+          listFunction();
         })
         .catch(() =>
           createNotification(
@@ -49,7 +50,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
             'filled'
           )
         );
-    } else if (accion === 'actualizar') {
+    } else if (action === actions.UPDATE) {
       actualizarPerfil(cell.data[cell.row.index].id, data)
         .then((response) => {
           createNotification(
@@ -58,7 +59,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
             `Se ha actualizado el modulo ${response.data.username}`,
             'filled'
           );
-          funcionListar();
+          listFunction();
         })
         .catch(() =>
           createNotification(
@@ -69,7 +70,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
           )
         );
     }
-    funcionCerrar();
+    closeFunction();
     reset();
   };
 
@@ -86,7 +87,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="nombre"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('nombre', { required: true, maxLength: 50 })}
               />
               {errors.nombre?.type === 'required' && (
@@ -113,7 +114,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="descripcion"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('descripcion', {
                   required: false,
                   maxLength: 1000,
@@ -133,7 +134,7 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
           </Colxx>
         </Row>
 
-        {accion !== 'ver' && (
+        {action !== actions.READ && (
           <Button outline color="success">
             <IntlMessages id="Guardar" />
           </Button>
@@ -143,4 +144,4 @@ const FormularioModulo = ({ cell, accion, funcionCerrar, funcionListar }) => {
   );
 };
 
-export default FormularioModulo;
+export default FormularioPerfiles;

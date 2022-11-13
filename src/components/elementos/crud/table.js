@@ -4,7 +4,7 @@ import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
 import { Card, CardBody, CardTitle, Row, Button } from 'reactstrap';
 import { Colxx, Separator } from '../../common/CustomBootstrap';
 import DatatablePagination from '../../DatatablePagination';
-import ColumnFilter from '../../tablaDatosGeneral/filtros/tablaFiltros';
+import ColumnFilter from './filters';
 import ButtonMF from '../forms/buttonMF';
 import './styles.css';
 import Breadcrumb from '../../../containers/navs/Breadcrumb';

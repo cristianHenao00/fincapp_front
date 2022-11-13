@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/named */
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Label, Button, Form, Row } from 'reactstrap';
-import { Colxx } from 'components/common/CustomBootstrap';
-import IntlMessages from 'helpers/IntlMessages';
-
+import IntlMessages from '../../../helpers/IntlMessages';
+import { Colxx } from '../../common/CustomBootstrap';
+import { actions } from '../../../constants/config';
 import createNotification from '../../notificaciones/flotantes';
-import { obtenerMenu, crearMenu, actualizarMenu } from '../../../services/menu';
+import { buscarMenu, crearMenu, actualizarMenu } from '../../../services/menu';
 
-const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
+const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -17,8 +18,8 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
   } = useForm();
 
   useEffect(() => {
-    if (accion === 'actualizar' || accion === 'ver') {
-      obtenerMenu(cell.data[cell.row.index].id)
+    if (action === actions.UPDATE || action === actions.READ) {
+      buscarMenu(cell.data[cell.row.index].id)
         .then((response) => {
           reset(response.data);
         })
@@ -27,7 +28,8 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
   }, []);
 
   const onSubmit = (data) => {
-    if (accion === 'crear') {
+    console.log(data);
+    if (action === actions.CREATE) {
       crearMenu(data)
         .then((response) => {
           createNotification(
@@ -36,12 +38,12 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
             `Se ha creado el menu ${response.data.username}`,
             'filled'
           );
-          funcionListar();
+          listFunction();
         })
         .catch(() =>
           createNotification('error', 'Error', `Error al crear menu`, 'filled')
         );
-    } else if (accion === 'actualizar') {
+    } else if (action === actions.UPDATE) {
       actualizarMenu(cell.data[cell.row.index].id, data)
         .then((response) => {
           createNotification(
@@ -50,7 +52,7 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
             `Se ha actualizado el menu ${response.data.username}`,
             'filled'
           );
-          funcionListar();
+          listFunction();
         })
         .catch(() =>
           createNotification(
@@ -61,7 +63,7 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
           )
         );
     }
-    funcionCerrar();
+    closeFunction();
     reset();
   };
 
@@ -78,7 +80,7 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="nombre"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('nombre', { required: true, maxLength: 50 })}
               />
               {errors.nombre?.type === 'required' && (
@@ -105,7 +107,7 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="ruta"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('ruta', { required: false, maxLength: 50 })}
               />
               {errors.ruta?.type === 'required' && (
@@ -132,7 +134,7 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="icono"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('icono', { required: false, maxLength: 100 })}
               />
               {errors.icono?.type === 'required' && (
@@ -149,7 +151,7 @@ const FormularioMenu = ({ cell, accion, funcionCerrar, funcionListar }) => {
           </Colxx>
         </Row>
 
-        {accion !== 'ver' && (
+        {action !== actions.READ && (
           <Button outline color="success">
             <IntlMessages id="Guardar" />
           </Button>

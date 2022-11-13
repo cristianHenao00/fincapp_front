@@ -15,12 +15,13 @@ import {
   crearUsuario,
   actualizarUsuario,
 } from '../../../services/usuarios';
+import { actions } from '../../../constants/config';
 
 import createNotification from '../../notificaciones/flotantes';
 
 import { listarPerfil } from '../../../services/perfil';
 
-const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
+const FormularioUsuarios = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -43,7 +44,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
       setPerfiles(response.data);
     });
     listarDepartamentos().then((response) => setDepartamentos(response.data));
-    if (accion === 'actualizar' || accion === 'ver') {
+    if (action === actions.UPDATE || action === actions.READ) {
       obtenerUsuario(cell.data[cell.row.index].id)
         .then((response) => {
           const { data } = response;
@@ -70,7 +71,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
   }, []);
 
   const onSubmit = (data) => {
-    if (accion === 'crear') {
+    if (action === actions.CREATE) {
       crearUsuario(data)
         .then((response) => {
           createNotification(
@@ -79,7 +80,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
             `Se ha creado el usuario ${response.data.username}`,
             'filled'
           );
-          funcionListar();
+          listFunction();
         })
         .catch(() =>
           createNotification(
@@ -89,7 +90,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
             'filled'
           )
         );
-    } else if (accion === 'actualizar') {
+    } else if (action === actions.UPDATE) {
       actualizarUsuario(cell.data[cell.row.index].id, data)
         .then((response) => {
           createNotification(
@@ -98,7 +99,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
             `Se ha actualizado el usuario ${response.data.username}`,
             'filled'
           );
-          funcionListar();
+          listFunction();
         })
         .catch(() =>
           createNotification(
@@ -109,7 +110,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
           )
         );
     }
-    funcionCerrar();
+    closeFunction();
     reset();
   };
 
@@ -124,7 +125,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.nombreCompleto"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.nombreCompleto', {
                   required: true,
                   maxLength: 30,
@@ -152,7 +153,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="correo"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('nombreusuario', {
                   required: true,
                   maxLength: 30,
@@ -189,7 +190,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.tipoDocumento"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.tipoDocumento')}
               >
                 <option value="">Seleccione uno</option>
@@ -209,7 +210,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.numeroDocumento"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.numeroDocumento', {
                   required: true,
                   maxLength: 12,
@@ -239,7 +240,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.genero"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.genero')}
               >
                 <option value="">Seleccione uno</option>
@@ -258,7 +259,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="date"
                 className="form-control"
                 id="fechaNacimiento"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.fechaNacimiento')}
               />
             </FormGroup>
@@ -273,7 +274,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.idDepartamento"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 onChangeCapture={onChangeDepartamento}
                 {...register('informacionUsuario.idDepartamento')}
               >
@@ -294,7 +295,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.idCiudad"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.idCiudad')}
               >
                 <option value="">Seleccione uno</option>
@@ -316,7 +317,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.direccion"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.direccion')}
               />
             </FormGroup>
@@ -329,7 +330,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.telefono"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.telefono')}
               />
             </FormGroup>
@@ -342,7 +343,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="text"
                 className="form-control"
                 id="informacionUsuario.celular"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('informacionUsuario.celular')}
               />
             </FormGroup>
@@ -355,7 +356,7 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
               <select
                 className="form-control"
                 id="idPerfil"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('idPerfil', { required: true })}
               >
                 <option value="">Seleccione uno</option>
@@ -379,13 +380,13 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
                 type="password"
                 className="form-control"
                 id="contrasena"
-                disabled={accion === 'ver'}
+                disabled={action === actions.READ}
                 {...register('contrasena')}
               />
             </FormGroup>
           </Colxx>
         </Row>
-        {accion !== 'ver' && (
+        {action !== actions.READ && (
           <Button color="success">
             <IntlMessages id="Guardar" />
           </Button>
@@ -395,4 +396,4 @@ const FormularioUsuario = ({ cell, accion, funcionCerrar, funcionListar }) => {
   );
 };
 
-export default FormularioUsuario;
+export default FormularioUsuarios;

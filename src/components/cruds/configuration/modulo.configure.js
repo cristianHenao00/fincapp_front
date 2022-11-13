@@ -1,12 +1,11 @@
 import React from 'react';
 
-import DeleteForm from '../../formulariosElementos/delete';
+import DeleteForm from '../../elementos/crud/delete';
 import { setCreate, setsAsignar } from '../Buttonset';
-import Assign from '../../formulariosElementos/assign';
-import Create from '../../formulariosElementos/modulo/create';
-import Read from '../../formulariosElementos/modulo/read';
-import Update from '../../formulariosElementos/modulo/update';
+import Assign from '../../elementos/crud/assign';
+import FormularioModulo from '../../formularios/cruds/modulos.crud';
 import * as serviceModulo from '../../../services/modulos';
+import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = ['id', 'Nombre', 'Descripción', 'Icono', 'Acciones'];
@@ -19,19 +18,21 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <Read
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioModulo
         cell={cell}
+        action={actions.READ}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <Update
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioModulo
         cell={cell}
+        action={actions.UPDATE}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
@@ -40,7 +41,7 @@ const forms = [
       <DeleteForm
         listFunction={listFunction}
         closeFunction={closeFunction}
-        title="Menu"
+        title="Módulo"
         cell={cell}
         service={serviceModulo.eliminarModulo}
       />
@@ -62,7 +63,13 @@ const forms = [
 
 /** Formulario para el boton crear  */
 const formCreate = (listFunction, closeFunction) => {
-  return <Create listFunction={listFunction} closeFunction={closeFunction} />;
+  return (
+    <FormularioModulo
+      action={actions.CREATE}
+      closeFunction={closeFunction}
+      listFunction={listFunction}
+    />
+  );
 };
 
 /** Titulo para el boton crear */

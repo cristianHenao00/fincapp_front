@@ -1,12 +1,11 @@
 import React from 'react';
 
-import DeleteForm from '../../formulariosElementos/delete';
+import DeleteForm from '../../elementos/crud/delete';
 import { setCreate, setsAsignar } from '../Buttonset';
-import Assign from '../../formulariosElementos/assign';
-import Create from '../../formulariosElementos/perfil/create';
-import Read from '../../formulariosElementos/perfil/read';
-import Update from '../../formulariosElementos/perfil/update';
+import Assign from '../../elementos/crud/assign';
+import FormularioPerfiles from '../../formularios/cruds/perfiles.cruds';
 import * as servicePerfil from '../../../services/perfil';
+import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = ['Nombre', 'Descripción', 'Fecha de creación', 'Acciones'];
@@ -19,19 +18,21 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <Read
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioPerfiles
+        action={actions.READ}
         cell={cell}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <Update
-        listFunction={listFunction}
-        closeFunction={closeFunction}
+      <FormularioPerfiles
+        action={actions.UPDATE}
         cell={cell}
+        closeFunction={closeFunction}
+        listFunction={listFunction}
       />
     );
   },
@@ -40,7 +41,7 @@ const forms = [
       <DeleteForm
         listFunction={listFunction}
         closeFunction={closeFunction}
-        title="Menu"
+        title="Perfil"
         cell={cell}
         service={servicePerfil.eliminarPerfil}
       />
@@ -62,7 +63,13 @@ const forms = [
 
 /** Formulario para el boton crear  */
 const formCreate = (listFunction, closeFunction) => {
-  return <Create listFunction={listFunction} closeFunction={closeFunction} />;
+  return (
+    <FormularioPerfiles
+      action={actions.CREATE}
+      closeFunction={closeFunction}
+      listFunction={listFunction}
+    />
+  );
 };
 
 /** Titulo para el boton crear */
