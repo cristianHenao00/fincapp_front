@@ -33,8 +33,8 @@ const validateEmail = (value) => {
 };
 
 const Login = ({ history, loading, error, loginUserAction }) => {
-  const [email] = useState('super@super.com');
-  const [password] = useState('super1234');
+  const [email] = useState('sammy99marin@gmail.com');
+  const [password] = useState('12345678');
 
   useEffect(() => {
     if (error) {

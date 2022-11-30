@@ -1,5 +1,5 @@
 export const UserRole = {
-  admin: 'admin',
+  administrator: 'administrator',
 };
 
 /*
@@ -36,7 +36,7 @@ export const currentUser = {
   title: 'Sarah Kortney',
   img: '/assets/img/profiles/l-1.jpg',
   date: 'Last seen today 15:24',
-  role: UserRole.Admin,
+  role: UserRole.admin,
 };
 
 export const themeColorStorageKey = '__theme_selected_color';
@@ -59,7 +59,7 @@ export const colors = [
   'greysteel',
 ];
 
-export const urlBase = 'http://localhost:3333/api/v1';
+export const apiUrl = 'http://localhost:3333';
 
 export const actions = {
   CREATE: 'create',

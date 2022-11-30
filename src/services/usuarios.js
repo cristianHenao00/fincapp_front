@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { urlBase } from '../constants/config';
+import { apiUrl } from '../constants/config';
 import { getCurrentUser } from '../helpers/Utils';
 
-const baseUrl = urlBase;
+const baseUrl = apiUrl;
 
 const currentUser = getCurrentUser();
 

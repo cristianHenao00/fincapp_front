@@ -1,36 +1,36 @@
 import { adminRoot } from './config';
 import Modulos from '../services/modulos';
 
-function ConstruirMenu1(nombre, icon) {
-  const title = nombre;
+function ConstruirMenu1(name, icon) {
+  const title = name;
   const Menu = {
-    id: nombre,
+    id: name,
     icon,
     label: title,
-    to: `${adminRoot}/${nombre}`,
+    to: `${adminRoot}/${name}`,
   };
   return Menu;
 }
 
 function ConstruirSubs(menus, nombrePadre) {
   const subs = menus.map((v, i) => {
-    const title = menus[i].nombre;
+    const title = menus[i].name;
     return {
-      icon: menus[i].icono,
+      icon: menus[i].icon,
       label: title,
-      to: `${adminRoot}/${nombrePadre}/${menus[i].nombre}`,
+      to: `${adminRoot}/${nombrePadre}/${menus[i].name}`,
     };
   });
   return subs;
 }
 
-function ConstruirMenu3(nombre, icon, menus) {
+function ConstruirMenu3(name, icon, menus) {
   const Menu = {
-    id: nombre,
+    id: name,
     icon,
-    label: nombre,
-    to: `${adminRoot}/${nombre}`,
-    subs: ConstruirSubs(menus, `${nombre.toLowerCase()}`),
+    label: name,
+    to: `${adminRoot}/${name}`,
+    subs: ConstruirSubs(menus, `${name.toLowerCase()}`),
   };
   return Menu;
 }
@@ -39,8 +39,8 @@ const data = Modulos.map((v, i) => {
   let aux = {};
   const mod = Modulos[i];
   if (Modulos[i].menus?.length > 0)
-    aux = ConstruirMenu3(mod.nombre, mod.icono, mod.menus);
-  else aux = ConstruirMenu1(mod.nombre, mod.icono);
+    aux = ConstruirMenu3(mod.name, mod.icon, mod.menus);
+  else aux = ConstruirMenu1(mod.name, mod.icon);
   return aux;
 });
 

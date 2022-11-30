@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable */
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { auth } from '../../helpers/Firebase';
 import { adminRoot, currentUser } from '../../constants/config';
@@ -22,8 +22,7 @@ import {
   resetPasswordError,
 } from './actions';
 
-import login, {obtnerModulosMenus} from '../../services/login'
-
+import login, { getModulesMenus } from '../../services/login';
 
 export function* watchLoginUser() {
   // eslint-disable-next-line no-use-before-define
@@ -31,22 +30,22 @@ export function* watchLoginUser() {
 }
 
 const loginWithEmailPasswordAsync = async (email, password) => {
-  // eslint-disable-next-line no-return-await
   const body = {
-    username: email,
-    password
-  }
+    email,
+    password,
+  };
 
-  return login(body)    
+  return login(body)
     .then((user) => user)
     .catch((error) => error);
-}
+};
 
 function* loginWithEmailPassword({ payload }) {
   const { email, password } = payload.user;
   const { history } = payload;
 
   // borrar desde aca que es manual
+  /**
   const item = { 
     id: 1,
     idPerfil: 1,          
@@ -153,35 +152,34 @@ function* loginWithEmailPassword({ payload }) {
   history.push(adminRoot);
   yield put(loginUserSuccess(item));
   window.location.reload(true);
+   */
   // borrar hast aca que es manual
-  // try {
+  try {
     const loginUser = yield call(loginWithEmailPasswordAsync, email, password);
-    if (!loginUser.message) {      
-      // const item = { 
-      //   id: loginUser.data.id,
-      //   idPerfil: loginUser.data.idPerfil,          
-      //   token: loginUser.data.token,       
-      //   role: loginUser.data.rol,
-      // };
+    if (!loginUser.message) {
+      const item = {
+        id: loginUser.data.user.id,
+        idRole: loginUser.data.user.role_id,
+        role: loginUser.data.user.role_name,
+        token: loginUser.data.token.token,
+      };
+      console.log(item);
       const headers = {
-        Authorization: `Bearer ${item.token}`
-      } 
-      obtnerModulosMenus(item.idPerfil, headers)
-        .then(response => {          
-          item.modulo = response.data;
-          setCurrentUser(item);          
-          history.push(adminRoot);
-          window.location.reload(true);
-        })
-        yield put(loginUserSuccess(item));
-      
+        Authorization: `Bearer ${item.token}`,
+      };
+      getModulesMenus(item.idRole, headers).then((response) => {
+        item.modules = response.data.modules;
+        setCurrentUser(item);
+        history.push(adminRoot);
+        window.location.reload(true);
+      });
+      yield put(loginUserSuccess(item));
     } else {
       // yield put(loginUserError(loginUser.message));
     }
-    
-  // } catch (error) {
-  //   yield put(loginUserError(error));
-  // }
+  } catch (error) {
+    yield put(loginUserError(error));
+  }
 }
 
 export function* watchRegisterUser() {
