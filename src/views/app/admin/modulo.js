@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import ConfigureAction from '../../../components/cruds/configureAction';
 import getData from '../../../components/cruds/arrangeData';
 import configure from '../../../components/cruds/configuration/modulo.configure';
-import Table from '../../../components/elementos/crud/table';
-import { listarModulos } from '../../../services/modulos';
+import Table from '../../../components/elements/crud/table';
+import { listarModulos } from '../../../services/modules';
 
 const Modulo = ({ match, menu }) => {
   const [data, setData] = useState({});

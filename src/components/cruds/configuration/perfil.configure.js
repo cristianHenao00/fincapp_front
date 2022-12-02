@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DeleteForm from '../../elementos/crud/delete';
+import DeleteForm from '../../elements/crud/delete';
 import { setCreate, setsAsignar } from '../Buttonset';
-import Assign from '../../elementos/crud/assign';
-import FormularioPerfiles from '../../formularios/cruds/perfiles.cruds';
+import Assign from '../../elements/crud/assign';
+import FormularioPerfiles from '../../forms/cruds/perfiles.cruds';
 import * as servicePerfil from '../../../services/perfil';
 import { actions } from '../../../constants/config';
 

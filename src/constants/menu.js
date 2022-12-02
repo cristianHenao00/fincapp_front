@@ -1,7 +1,7 @@
 import { adminRoot } from './config';
-import Modulos from '../services/modulos';
+import Modules from '../services/modules';
 
-function ConstruirMenu1(name, icon) {
+function BuildMenu1(name, icon) {
   const title = name;
   const Menu = {
     id: name,
@@ -12,7 +12,7 @@ function ConstruirMenu1(name, icon) {
   return Menu;
 }
 
-function ConstruirSubs(menus, nombrePadre) {
+function BuildSubs(menus, nombrePadre) {
   const subs = menus.map((v, i) => {
     const title = menus[i].name;
     return {
@@ -24,23 +24,23 @@ function ConstruirSubs(menus, nombrePadre) {
   return subs;
 }
 
-function ConstruirMenu3(name, icon, menus) {
+function BuildMenu3(name, icon, menus) {
   const Menu = {
     id: name,
     icon,
     label: name,
     to: `${adminRoot}/${name}`,
-    subs: ConstruirSubs(menus, `${name.toLowerCase()}`),
+    subs: BuildSubs(menus, `${name.toLowerCase()}`),
   };
   return Menu;
 }
 
-const data = Modulos.map((v, i) => {
+const data = Modules.map((v, i) => {
   let aux = {};
-  const mod = Modulos[i];
-  if (Modulos[i].menus?.length > 0)
-    aux = ConstruirMenu3(mod.name, mod.icon, mod.menus);
-  else aux = ConstruirMenu1(mod.name, mod.icon);
+  const mod = Modules[i];
+  if (Modules[i].menus?.length > 0)
+    aux = BuildMenu3(mod.name, mod.icon, mod.menus);
+  else aux = BuildMenu1(mod.name, mod.icon);
   return aux;
 });
 

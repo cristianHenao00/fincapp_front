@@ -1,5 +1,5 @@
 import React from 'react';
-import Actions from '../elementos/forms/actions';
+import Actions from '../elements/forms/actions';
 import { actions } from '../../constants/config';
 
 const ConfigureAction = (configure, menu) => {

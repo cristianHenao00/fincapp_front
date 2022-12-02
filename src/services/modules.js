@@ -9,7 +9,7 @@ const headers = {
 };
 
 /** Tiene los modulos asignados al usuario */
-const Modulos = getCurrentUser().modulo;
+const Modules = getCurrentUser().modules;
 
 export const listarModulos = () => axios.get(`${apiUrl}/modulos`, { headers });
 
@@ -44,4 +44,4 @@ export const eliminarMenuModulo = (props) => {
   });
 };
 
-export default Modulos;
+export default Modules;

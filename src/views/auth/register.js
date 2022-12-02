@@ -7,7 +7,7 @@ import { registerUser } from '../../redux/actions';
 import IntlMessages from '../../helpers/IntlMessages';
 import { Colxx } from '../../components/common/CustomBootstrap';
 
-import Registro from '../../components/formularios/registro';
+import Registro from '../../components/forms/registro';
 
 const Register = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import configure from '../../../components/cruds/configuration/usuario.configure';
 import listarUsuarios from '../../../services/usuarios';
 import getData from '../../../components/cruds/arrangeData';
-import Table from '../../../components/elementos/crud/table';
+import Table from '../../../components/elements/crud/table';
 
 const Usuarios = ({ match }) => {
   const [data, setData] = useState({});

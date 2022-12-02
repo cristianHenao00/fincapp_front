@@ -3,7 +3,7 @@ import React from 'react';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import { FormGroup, Label } from 'reactstrap';
 
-import ValidationError from '../../../components/elementos/forms/validationError'
+import ValidationError from '../../../components/elements/forms/validationError'
 
 /**
  * 

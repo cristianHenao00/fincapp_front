@@ -10,7 +10,7 @@ import {
   obtenerModulo,
   crearModulo,
   actualizarModulo,
-} from '../../../services/modulos';
+} from '../../../services/modules';
 
 const FormularioModulo = ({ cell, action, closeFunction, listFunction }) => {
   const {

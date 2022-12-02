@@ -1,7 +1,7 @@
 import React from 'react';
-import FormularioUsuarios from '../../formularios/cruds/usuarios.crud';
-import Actions from '../../elementos/forms/actions';
-import DeleteForm from '../../elementos/crud/delete';
+import FormularioUsuarios from '../../forms/cruds/usuarios.crud';
+import Actions from '../../elements/forms/actions';
+import DeleteForm from '../../elements/crud/delete';
 import * as serviceUsuarios from '../../../services/usuarios';
 import * as Sets from '../Buttonset';
 import { actions } from '../../../constants/config';

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import DeleteForm from '../../elementos/crud/delete';
+import DeleteForm from '../../elements/crud/delete';
 import { setCreate, setsAsignar } from '../Buttonset';
-import Assign from '../../elementos/crud/assign';
-import FormularioModulo from '../../formularios/cruds/modulos.crud';
-import * as serviceModulo from '../../../services/modulos';
+import Assign from '../../elements/crud/assign';
+import FormularioModulo from '../../forms/cruds/modulos.crud';
+import * as serviceModulo from '../../../services/modules';
 import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
