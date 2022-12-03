@@ -1,4 +1,4 @@
-/* eslint-disable react/no-array-index-key */
+/* eslint-disable */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
@@ -27,7 +27,6 @@ class Sidebar extends Component {
     };
   }
 
-  // eslint-disable-next-line react/sort-comp
   handleWindowResize = (event) => {
     if (event && !event.isTrusted) {
       return;
@@ -245,7 +244,6 @@ class Sidebar extends Component {
     return false;
   };
 
-  // eslint-disable-next-line react/sort-comp
   componentDidUpdate(prevProps) {
     // eslint-disable-next-line react/destructuring-assignment
     if (this.props.location.pathname !== prevProps.location.pathname) {
@@ -338,7 +336,6 @@ class Sidebar extends Component {
     return false;
   };
 
-  // eslint-disable-next-line no-shadow
   filteredList = (menuItems) => {
     const { currentUser } = this.props;
     if (currentUser) {

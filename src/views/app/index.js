@@ -2,18 +2,18 @@
 import React, { Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import renderComponents from './renderRoutes';
-import Modulos from '../../services/modules';
+import renderComponent from './renderRoutes';
+import Modules from '../../services/modules';
 import AppLayout from '../../layout/AppLayout';
 
 const App = ({ match }) => {
-  const rutas = [];
+  const paths = [];
 
-  for (let i = 0; i < Modulos.length; i += 1) {
-    rutas[i] = {
-      nombre: Modulos[i].nombre,
-      ruta: Modulos[i].ruta,
-      menus: Modulos[i].menus,
+  for (let i = 0; i < Modules.length; i += 1) {
+    paths[i] = {
+      name: Modules[i].name,
+      path: Modules[i].path,
+      menus: Modules[i].menus,
     };
   }
 
@@ -23,34 +23,37 @@ const App = ({ match }) => {
         <Suspense fallback={<div className="loading" />}>
           <Switch>
             <Redirect exact from={`${match.url}/`} to={`${match.url}/inicio`} />
-            {rutas.map((_, i) => {
-              const a = [];
-              const v = rutas[i];
-              if (v.menus?.length > 0) {
-                v.menus.map((p, j) => {
-                  const m = v.menus[j];
-                  a.push(
+            {paths.map((_, i) => {
+              const routes = [];
+              const renderModule = paths[i];
+              if (renderModule.menus.length === 0) {
+                routes.push(
+                  <Route
+                    path={`${match.url}/${renderModule.path}`}
+                    render={(props) =>
+                      renderComponent(renderModule.path, props)
+                    }
+                    key="llave ciudades"
+                  />
+                );
+              } else {
+                renderModule.menus.forEach((p, j) => {
+                  const menu = renderModule.menus[j];
+                  console.log(`${match.url}/${renderModule.path}/${menu.path}`);
+                  routes.push(
                     <Route
-                      path={`${match.url}/${v.nombre}/${m.nombre}`}
+                      path={`${match.url}/${renderModule.path}/${menu.path}`}
                       render={(props) => {
-                        props.menu = m;
-                        return renderComponents(m.ruta, props);
+                        props.menu = menu;
+                        console.log('props', menu);
+                        return renderComponent(menu.path, props);
                       }}
                       key="llave ciudades"
                     />
                   );
-                  return '';
                 });
-              } else {
-                a.push(
-                  <Route
-                    path={`${match.url}${'/'.concat(v.nombre)}`}
-                    render={(props) => renderComponents(v.ruta, props)}
-                    key="llave ciudades"
-                  />
-                );
               }
-              return a;
+              return routes;
             })}
           </Switch>
         </Suspense>

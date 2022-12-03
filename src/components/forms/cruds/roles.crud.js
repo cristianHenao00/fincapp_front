@@ -8,7 +8,6 @@ import IntlMessages from '../../../helpers/IntlMessages';
 import { Colxx } from '../../common/CustomBootstrap';
 import { actions } from '../../../constants/config';
 import createNotification from '../../notificaciones/flotantes';
-import { buscarMenu, crearMenu, actualizarMenu } from '../../../services/menu';
 
 const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
   const {

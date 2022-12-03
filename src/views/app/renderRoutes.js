@@ -9,13 +9,15 @@ const usuarios = React.lazy(() => import('./admin/usuarios'));
 const modulo = React.lazy(() => import('./admin/modulo'));
 const menu = React.lazy(() => import('./admin/menu'));
 const perfiles = React.lazy(() => import('./admin/perfil'));
+const roles = React.lazy(() => import('./admin/roles'));
 
 const userInicio = {
-  [UserRole.admin]: inicioAdmin,
+  [UserRole.administrator]: inicioAdmin,
 };
 
 const components = {
   inicio: userInicio[currentUser.role],
+  roles,
   usuarios,
   modulo,
   menu,
@@ -29,6 +31,8 @@ const components = {
  */
 export default function renderRoutes(route, props) {
   const Component = components[route];
+  console.log('entroooo aquiii ahhhhhhhhhhh');
+  console.log('route', route);
   if (!Component) {
     return <components.inicio {...props} />;
   }
