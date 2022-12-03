@@ -163,7 +163,6 @@ function* loginWithEmailPassword({ payload }) {
         role: loginUser.data.user.role_name,
         token: loginUser.data.token.token,
       };
-      console.log(item);
       const headers = {
         Authorization: `Bearer ${item.token}`,
       };

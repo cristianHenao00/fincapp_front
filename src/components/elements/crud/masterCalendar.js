@@ -25,8 +25,6 @@ const MasterCalendar = ({idTipoTrabajo}) => {
     'Sábado',    
   ]
 
-  console.log('idTipoTrabajo', idTipoTrabajo)
-
   useEffect(() => {
     listarAgendamiento()
       .then(response => setAgendas(response.data))

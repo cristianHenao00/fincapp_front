@@ -9,7 +9,7 @@ import { Colxx } from '../../common/CustomBootstrap';
 import { actions } from '../../../constants/config';
 import createNotification from '../../notificaciones/flotantes';
 
-const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
+const FormularioRol = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -58,6 +58,32 @@ const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
             </FormGroup>
           </Colxx>
         </Row>
+        <Row>
+          <Colxx xxs="12" className="nombre">
+            <FormGroup>
+              <Label for="nombre">
+                <IntlMessages id="Nombre" />
+              </Label>
+              <input
+                type="text"
+                className="form-control"
+                id="nombre"
+                disabled={action === actions.READ}
+                {...register('nombre', { required: true, maxLength: 50 })}
+              />
+              {errors.nombre?.type === 'required' && (
+                <div className="invalid-feedback d-block">
+                  El nombre es requerido
+                </div>
+              )}
+              {errors.nombre?.type === 'maxLength' && (
+                <div className="invalid-feedback d-block">
+                  El nombre debe contener máximo 50 caractéres
+                </div>
+              )}
+            </FormGroup>
+          </Colxx>
+        </Row>
         {action !== actions.READ && (
           <Button outline color="success">
             <IntlMessages id="Guardar" />
@@ -68,4 +94,4 @@ const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormularioMenu;
+export default FormularioRol;

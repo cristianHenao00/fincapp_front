@@ -9,19 +9,19 @@ const ConfigureAction = (configure, menu) => {
   configure.sets.forEach((s, i) => {
     switch (s.title) {
       case actions.READ:
-        if (menu.accionVer) {
+        if (menu.read_action) {
           sets.push(configure.sets[i]);
           forms.push(configure.forms[i]);
         }
         break;
       case actions.UPDATE:
-        if (menu.accionActualizar) {
+        if (menu.update_action) {
           sets.push(configure.sets[i]);
           forms.push(configure.forms[i]);
         }
         break;
       case actions.DELETE:
-        if (menu.accionEliminar) {
+        if (menu.delete_action) {
           sets.push(configure.sets[i]);
           forms.push(configure.forms[i]);
         }

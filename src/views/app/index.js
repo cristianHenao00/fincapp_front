@@ -39,13 +39,11 @@ const App = ({ match }) => {
               } else {
                 renderModule.menus.forEach((p, j) => {
                   const menu = renderModule.menus[j];
-                  console.log(`${match.url}/${renderModule.path}/${menu.path}`);
                   routes.push(
                     <Route
                       path={`${match.url}/${renderModule.path}/${menu.path}`}
                       render={(props) => {
                         props.menu = menu;
-                        console.log('props', menu);
                         return renderComponent(menu.path, props);
                       }}
                       key="llave ciudades"

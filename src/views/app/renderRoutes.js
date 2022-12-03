@@ -31,8 +31,6 @@ const components = {
  */
 export default function renderRoutes(route, props) {
   const Component = components[route];
-  console.log('entroooo aquiii ahhhhhhhhhhh');
-  console.log('route', route);
   if (!Component) {
     return <components.inicio {...props} />;
   }

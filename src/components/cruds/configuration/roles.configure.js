@@ -1,17 +1,17 @@
 import React from 'react';
 import FormularioRol from '../../forms/cruds/roles.crud';
-import { setCreate, setsAsignar } from '../Buttonset';
 import Assign from '../../elements/crud/assign';
 import DeleteForm from '../../elements/crud/delete';
 import * as ServiceRole from '../../../services/roles';
+import * as Sets from '../Buttonset';
 import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
-const headers = ['id', 'Nombre', 'Acciones'];
+const headers = ['Nombre', 'Acciones'];
 // las keys del json de la consulta a base de datos false cuando es una action
-const accessor = ['id', 'name', false];
-// los tamaños en acho de las tablas
-const size = ['5', '20', '15', '20', '30'];
+const accessor = ['name', false];
+// los tamaños en acho de las tablas 100 dividido en la cantidad de headers
+const size = ['70', '30'];
 
 const forms = [
   (listFunction, closeFunction, cell) => {
@@ -39,7 +39,7 @@ const forms = [
       <DeleteForm
         listFunction={listFunction}
         closeFunction={closeFunction}
-        title="Módulo"
+        title="Roles"
         cell={cell}
         service={ServiceRole.deleteRole}
       />
@@ -48,9 +48,9 @@ const forms = [
   (listFunction, closeFunction, cell) => {
     return (
       <Assign
-        listFunction={ServiceRole.getRoles}
-        AssignService={ServiceRole.getRoles}
-        unAssignService={ServiceRole.getRoles}
+        listFunction={ServiceRole.getRoles} // funcion que devuelve la lista de elementos a asociar
+        AssignService={ServiceRole.getRoles} // función de asociación
+        unAssignService={ServiceRole.getRoles} // función de desasociación
         closeFunction={closeFunction}
         cell={cell}
         msgs="agregar modulo al rol"
@@ -59,7 +59,6 @@ const forms = [
   },
 ];
 
-/** Formulario para el boton crear  */
 const formCreate = (listFunction, closeFunction) => {
   return (
     <FormularioRol
@@ -70,10 +69,11 @@ const formCreate = (listFunction, closeFunction) => {
   );
 };
 
-/** Titulo para el boton crear */
-setCreate.title = 'Crear roles';
+const { setCreate, setsAsignar } = Sets;
+
+setCreate.title = 'Crear rol';
 const sets = setsAsignar;
-/** archivo de configuracion para la tabla(CRUD) */
+
 const configure = {
   headers,
   accessor,
@@ -82,6 +82,7 @@ const configure = {
   forms,
   setCreate,
   formCreate,
-  name: 'Módulos',
+  name: 'Roles',
 };
+
 export default configure;

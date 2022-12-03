@@ -20,7 +20,7 @@ const Perfil = ({ match, menu }) => {
         data={newData}
         actions={actions}
         setCreate={configure.setCreate}
-        formCreate={menu.accionCrear ? configure.formCreate : null}
+        formCreate={menu.create_action ? configure.formCreate : null}
         name={configure.name}
         match={match}
       />

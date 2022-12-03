@@ -6,7 +6,6 @@ import getData from '../../../components/cruds/arrangeData';
 import Table from '../../../components/elements/crud/table';
 
 const Role = ({ match, menu }) => {
-  console.log('holaaaaaa');
   const [data, setData] = useState({});
   const newData = getData(setData, getRoles, data, configure.accessor);
   const actions = ConfigureAction(configure, menu);
@@ -19,7 +18,7 @@ const Role = ({ match, menu }) => {
         data={newData}
         actions={actions}
         setCreate={configure.setCreate}
-        formCreate={menu.accionCrear ? configure.formCreate : null}
+        formCreate={menu.create_action ? configure.formCreate : null}
         name={configure.name}
         match={match}
       />

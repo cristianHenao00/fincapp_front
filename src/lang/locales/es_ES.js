@@ -46,6 +46,11 @@ module.exports = {
   'menu.search': 'Búsqueda',
   'menu.docs': 'Docs',
   'menu.blank-page': 'Blank Page',
+  // Administrator
+  'menu.configuration': 'Configuración',
+  'menu.roles': 'Roles',
+  'menu.menu': 'Menús',
+
   /* 04.Error  */
   'layouts.error-title': 'Vaya, parece que ha ocurrido un error!',
   'layouts.error-code': 'Código de error',

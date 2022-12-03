@@ -71,7 +71,7 @@ function Table({
     {
       columns: cols,
       data,
-      initialState: { pageIndex: 0, pageSize: 6 },
+      initialState: { pageIndex: 0, pageSize: 10 },
     },
     useFilters,
     useSortBy,
