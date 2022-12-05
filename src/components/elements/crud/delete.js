@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Button } from 'reactstrap';
-import handlerSN from './handlerSN';
+import { Button, Col, Row } from 'reactstrap';
+import { handlerCUD } from './handlerServices';
 
 /**
  *
@@ -12,29 +12,17 @@ import handlerSN from './handlerSN';
  * @param {*} nombre si es true hace una consulta con el nombre de otra manera con el id
  * @returns un formulario para eliminar
  */
-const DeleteForm = ({
-  title,
-  closeFunction,
-  cell,
-  service,
-  nombre = 'false',
-  listFunction = false,
-}) => {
+const DeleteForm = ({ title, closeFunction, cell, service, listFunction }) => {
   const label = `¿Esta seguro que quiere eliminar ${title}?`;
 
-  const handlerDelete = async (Celda) => {
-    let Props = {};
-    if (nombre === 'false') {
-      Props = { id: Celda.id };
-    } else {
-      Props = { nombre: Celda.nombre };
-    }
-
-    await handlerSN(service, Props, 'Eliminar');
-    closeFunction();
-    if (listFunction) {
-      listFunction().then();
-    }
+  const handlerDelete = () => {
+    handlerCUD(
+      service,
+      { id: cell.id },
+      'Eliminar',
+      listFunction,
+      closeFunction
+    );
   };
 
   return (
@@ -43,19 +31,23 @@ const DeleteForm = ({
         <h4>{label}</h4>
       </div>
       <hr />
-      <div className="mt-3">
-        <Button color="danger" onClick={(e) => handlerDelete(cell)}>
-          Eliminar
-        </Button>
-        <Button
-          style={{ backgroundColor: '#5c6b73', color: 'white' }}
-          onClick={() => {
-            closeFunction();
-          }}
-        >
-          cancelar
-        </Button>
-      </div>
+      <Row>
+        <Col xs="auto">
+          <Button color="danger" onClick={(e) => handlerDelete()}>
+            Eliminar
+          </Button>
+        </Col>
+        <Col xs="auto">
+          <Button
+            color="secondary"
+            onClick={() => {
+              closeFunction();
+            }}
+          >
+            Cancelar
+          </Button>
+        </Col>
+      </Row>
     </>
   );
 };

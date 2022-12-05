@@ -4,7 +4,7 @@ import { Button, Modal, Tooltip, ModalBody } from 'reactstrap';
 import IntlMessages from '../../../helpers/IntlMessages';
 
 /**  
-    @param {listFunction} metodo que refresca la pagina
+    @param {listFunction} listFunction metodo que refresca la pagina
     @param {form} form es una funcion que retorna el formulario
     @param {cell} cell es la informacion de la casilla
     @param {set} set es la informacion del boton

@@ -50,6 +50,7 @@ module.exports = {
   'menu.configuration': 'Configuración',
   'menu.roles': 'Roles',
   'menu.menu': 'Menús',
+  'menu.modulo': 'Módulos',
 
   /* 04.Error  */
   'layouts.error-title': 'Vaya, parece que ha ocurrido un error!',

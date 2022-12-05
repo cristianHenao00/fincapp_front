@@ -1,26 +1,24 @@
 import React from 'react';
-
 import DeleteForm from '../../elements/crud/delete';
-import { setCreate, setsAsignar } from '../Buttonset';
-import Assign from '../../elements/crud/assign';
-import FormularioPerfiles from '../../forms/cruds/perfiles.cruds';
-import * as servicePerfil from '../../../services/perfil';
+import { setCreate, sets } from '../Buttonset';
+import FormularioModulo from '../../forms/cruds/modulos.crud';
+import * as service from '../../../services/permissions';
 import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
-const headers = ['Nombre', 'Descripción', 'Fecha de creación', 'Acciones'];
+const headers = ['URL', 'Método', 'Acciones'];
 // las keys del json de la consulta a base de datos false cuando es una action
-const accessor = ['nombre', 'descripcion', 'fechaCreacion', false];
+const accessor = ['url', 'method', false];
 // los tamaños en acho de las tablas
-const size = ['5', '20', '15', '20', '30'];
+const size = ['40', '20', '20'];
 
 /** Listado de funciones con sus formularios */
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioPerfiles
-        action={actions.READ}
+      <FormularioModulo
         cell={cell}
+        action={actions.READ}
         closeFunction={closeFunction}
         listFunction={listFunction}
       />
@@ -28,9 +26,9 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioPerfiles
-        action={actions.UPDATE}
+      <FormularioModulo
         cell={cell}
+        action={actions.UPDATE}
         closeFunction={closeFunction}
         listFunction={listFunction}
       />
@@ -41,21 +39,9 @@ const forms = [
       <DeleteForm
         listFunction={listFunction}
         closeFunction={closeFunction}
-        title="Perfil"
+        title="Módulo"
         cell={cell}
-        service={servicePerfil.eliminarPerfil}
-      />
-    );
-  },
-  (listFunction, closeFunction, cell) => {
-    return (
-      <Assign
-        listFunction={servicePerfil.modulosPerfil}
-        AssignService={servicePerfil.agregarModuloPerfil}
-        unAssignService={servicePerfil.deleteModulePerfil}
-        closeFunction={closeFunction}
-        cell={cell}
-        msgs="agregar modulo al perfil"
+        service={service.deletePermissions}
       />
     );
   },
@@ -64,7 +50,7 @@ const forms = [
 /** Formulario para el boton crear  */
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormularioPerfiles
+    <FormularioModulo
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}
@@ -73,8 +59,7 @@ const formCreate = (listFunction, closeFunction) => {
 };
 
 /** Titulo para el boton crear */
-setCreate.title = 'Crear perfil';
-const sets = setsAsignar;
+setCreate.title = 'Crear permiso';
 /** archivo de configuracion para la tabla(CRUD) */
 const configure = {
   headers,
@@ -84,7 +69,7 @@ const configure = {
   forms,
   setCreate,
   formCreate,
-  name: 'Perfiles',
+  name: 'Permisos',
 };
 
 export default configure;

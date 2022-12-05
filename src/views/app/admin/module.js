@@ -1,20 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import configure from '../../../components/cruds/configuration/menu.configure';
-import listarMenus from '../../../services/menu';
-import Table from '../../../components/elements/crud/table';
 import ConfigureAction from '../../../components/cruds/configureAction';
+import configure from '../../../components/cruds/configuration/module.configure';
+import Table from '../../../components/elements/crud/table';
+import { getModules } from '../../../services/modules';
+import { handlerGetData } from '../../../components/elements/crud/handlerServices';
 
-const Menu = ({ match, menu }) => {
+const Module = ({ match, menu }) => {
   const [data, setData] = useState([]);
 
   const actions = ConfigureAction(configure, menu);
 
-  const listFunction = () => {
-    listarMenus()
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((response) => console.log(response));
+  const listFunction = async () => {
+    const newData = await handlerGetData(getModules, 'Listando modulos');
+    setData(newData);
   };
 
   useEffect(() => {
@@ -38,4 +37,4 @@ const Menu = ({ match, menu }) => {
     </>
   );
 };
-export default Menu;
+export default Module;

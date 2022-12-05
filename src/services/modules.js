@@ -11,21 +11,21 @@ const headers = {
 /** Tiene los modulos asignados al usuario */
 const Modules = getCurrentUser().modules;
 
-export const listarModulos = () => axios.get(`${apiUrl}/modulos`, { headers });
+export const getModules = () => axios.get(`${apiUrl}/modules`, { headers });
 
-export const obtenerModulo = () => axios.get(`${apiUrl}/modulos`, { headers });
+export const getModule = (id) =>
+  axios.get(`${apiUrl}/modules/${id}`, { headers });
 
-export const crearModulo = (props) => {
-  const { body } = props;
-  return axios.post(`${apiUrl}/modulos/crear`, body, { headers });
+export const createModule = (body) => {
+  return axios.post(`${apiUrl}/modules`, body, { headers });
 };
 
-export const eliminarModulo = (props) => {
+export const deleteModule = (props) => {
   const { id } = props;
-  return axios.delete(`${apiUrl}/modulos/eliminar/${id}`, { headers });
+  return axios.delete(`${apiUrl}/modules/${id}`, { headers });
 };
 
-export const actualizarModulo = (props) => {
+export const updateModule = (props) => {
   const { id, body } = props;
   return axios.put(`${apiUrl}/modulos/actualizar/${id}`, body, { headers });
 };

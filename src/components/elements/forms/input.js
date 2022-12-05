@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { Colxx } from '../../../components/common/CustomBootstrap';
-import { FormGroup, Label } from 'reactstrap';
+import { Col, FormGroup, Label } from 'reactstrap';
 
 import ValidationError from '../../../components/elements/forms/validationError'
 
@@ -44,7 +43,7 @@ const Input = (props) => {
                 break;
         }       
 
-        return <Colxx xxs={size}>            
+        return <Col xs={size}>            
             <FormGroup {...attrForm}>
                 {type==='checkbox'? <input {...attrInput}  {...register(name)}/> : null}
                 <Label {...attrLabel}>
@@ -69,7 +68,7 @@ const Input = (props) => {
                 }
                 <ValidationError validation={validation} field={name} errors={errors}/>
             </FormGroup>                         
-        </Colxx>
+        </Col>
     }
 
     const showForm = (Props) => {
@@ -97,7 +96,7 @@ const Input = (props) => {
                 break;
         }
 
-        return <Colxx xxs={size}>            
+        return <Col xs={size}>            
             <FormGroup {...attrForm}>
                 {type==='checkbox'? <input {...attrInput}/> : null}
                 <Label {...attrLabel}>
@@ -106,7 +105,7 @@ const Input = (props) => {
                 {type!=='checkbox'? <input {...attrInput}/> : null}
                 
             </FormGroup>                         
-    </Colxx>
+    </Col>
     }
 
     const {show="false"} = props

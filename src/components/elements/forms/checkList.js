@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { Colxx } from '../../common/CustomBootstrap';
-import handlerSN from '../crud/handlerSN';
+import { handlerCUD } from '../crud/handlerServices';
 
 /**
  *
@@ -25,14 +25,14 @@ const CheckList = ({ name, register, title, size, fields, operations, ID }) => {
           moduloId: ID,
         },
       };
-      handlerSN(service, body, 'Asignar');
+      handlerCUD(service, body, 'Asignar');
     } else {
       const service = operations.unAssign;
       const body = {
         menuId: id,
         moduloId: ID,
       };
-      handlerSN(service, body, 'Desasignar');
+      handlerCUD(service, body, 'Desasignar');
     }
   };
   return (
