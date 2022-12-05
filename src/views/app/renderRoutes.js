@@ -4,21 +4,21 @@ import { getCurrentUser } from '../../helpers/Utils';
 
 const currentUser = getCurrentUser();
 
-const inicioAdmin = React.lazy(() => import('./admin/inicio'));
-const usuarios = React.lazy(() => import('./admin/usuarios'));
+const homeAdmin = React.lazy(() => import('./admin/home'));
+const users = React.lazy(() => import('./admin/users'));
 const modules = React.lazy(() => import('./admin/module'));
 const menu = React.lazy(() => import('./admin/menu'));
 const roles = React.lazy(() => import('./admin/roles'));
 const permissions = React.lazy(() => import('./admin/permissions'));
 
-const userInicio = {
-  [UserRole.administrator]: inicioAdmin,
+const userHome = {
+  [UserRole.administrator]: homeAdmin,
 };
 
 const components = {
-  inicio: userInicio[currentUser.role],
+  home: userHome[currentUser.role],
   roles,
-  usuarios,
+  users,
   modules,
   menu,
   permissions,
@@ -32,7 +32,7 @@ const components = {
 export default function renderRoutes(route, props) {
   const Component = components[route];
   if (!Component) {
-    return <components.inicio {...props} />;
+    return <components.home {...props} />;
   }
   return <Component {...props} />;
 }

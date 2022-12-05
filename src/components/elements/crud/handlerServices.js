@@ -36,3 +36,14 @@ export const handlerGetData = (service, msgs) => {
       return [];
     });
 };
+export const handlerGetSingleData = (service, props, msgs) => {
+  return service(props)
+    .then((response) => {
+      createNotification('success', msgs, 'Operación exitosa', 'filled');
+      return response.data;
+    })
+    .catch(() => {
+      createNotification('danger', msgs, 'Oops hubo un error', 'filled');
+      return {};
+    });
+};

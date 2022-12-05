@@ -22,7 +22,7 @@ const App = ({ match }) => {
       <div className="dashboard-wrapper">
         <Suspense fallback={<div className="loading" />}>
           <Switch>
-            <Redirect exact from={`${match.url}/`} to={`${match.url}/inicio`} />
+            <Redirect exact from={`${match.url}/`} to={`${match.url}/home`} />
             {paths.map((_, i) => {
               const routes = [];
               const renderModule = paths[i];

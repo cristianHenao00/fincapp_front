@@ -5,14 +5,16 @@ import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
 import Input from '../../elements/forms/input';
 import IntlMessages from '../../../helpers/IntlMessages';
 import { actions } from '../../../constants/config';
-import createNotification from '../../notificaciones/flotantes';
 import { modules as validation } from '../valiadations';
 import {
   getModule,
   createModule,
   updateModule,
 } from '../../../services/modules';
-import { handlerCUD } from '../../elements/crud/handlerServices';
+import {
+  handlerCUD,
+  handlerGetSingleData,
+} from '../../elements/crud/handlerServices';
 
 const FormularioModulo = ({ cell, action, closeFunction, listFunction }) => {
   const {
@@ -22,13 +24,10 @@ const FormularioModulo = ({ cell, action, closeFunction, listFunction }) => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
+  useEffect(async () => {
     if (action === actions.UPDATE || action === actions.READ) {
-      getModule(cell.id)
-        .then((response) => {
-          reset(response.data);
-        })
-        .catch((response) => console.log(response));
+      const data = await handlerGetSingleData(getModule, cell.id, 'Carga');
+      reset(data);
     }
   }, []);
 
@@ -36,26 +35,14 @@ const FormularioModulo = ({ cell, action, closeFunction, listFunction }) => {
     if (action === actions.CREATE) {
       handlerCUD(createModule, data, 'Creación', listFunction, closeFunction);
     } else if (action === actions.UPDATE) {
-      updateModule(cell.id, data)
-        .then((response) => {
-          createNotification(
-            'success',
-            'Actualización exitosa',
-            `Se ha actualizado el modulo ${response.data.name}`,
-            'filled'
-          );
-          listFunction();
-        })
-        .catch(() =>
-          createNotification(
-            'error',
-            'Error',
-            `Error al actualizar modulo`,
-            'filled'
-          )
-        );
+      handlerCUD(
+        updateModule,
+        { id: cell.id, body: data },
+        'Actualización',
+        listFunction,
+        closeFunction
+      );
     }
-    closeFunction();
     reset();
   };
 
