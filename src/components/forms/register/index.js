@@ -11,7 +11,7 @@ import listarDepartamentos, {
 } from '../../../services/ubicacion';
 import Registro from '../../../services/registro';
 
-const FormularioUsuario = () => {
+const FormUsuario = () => {
   const {
     register,
     handleSubmit,
@@ -408,4 +408,4 @@ const FormularioUsuario = () => {
   );
 };
 
-export default FormularioUsuario;
+export default FormUsuario;

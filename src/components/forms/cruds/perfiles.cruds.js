@@ -12,7 +12,7 @@ import {
 import createNotification from '../../notificaciones/flotantes';
 import { actions } from '../../../constants/config';
 
-const FormularioPerfiles = ({ cell, action, closeFunction, listFunction }) => {
+const FormPerfiles = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -144,4 +144,4 @@ const FormularioPerfiles = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormularioPerfiles;
+export default FormPerfiles;

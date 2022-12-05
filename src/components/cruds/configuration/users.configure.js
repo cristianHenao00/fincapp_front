@@ -1,8 +1,8 @@
 import React from 'react';
-import FormularioUsuarios from '../../forms/cruds/usuarios.crud';
+import FormUsers from '../../forms/cruds/users.crud';
 import Actions from '../../elements/forms/actions';
 import DeleteForm from '../../elements/crud/delete';
-import * as serviceUsuarios from '../../../services/usuarios';
+import * as serviceUsers from '../../../services/users';
 import * as Sets from '../Buttonset';
 import { actions } from '../../../constants/config';
 
@@ -26,7 +26,7 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioUsuarios
+      <FormUsers
         action={actions.READ}
         cell={cell}
         closeFunction={closeFunction}
@@ -36,7 +36,7 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioUsuarios
+      <FormUsers
         action={actions.UPDATE}
         cell={cell}
         closeFunction={closeFunction}
@@ -51,7 +51,7 @@ const forms = [
         closeFunction={closeFunction}
         title="Usuario"
         cell={cell}
-        service={serviceUsuarios.eliminarUsuario}
+        service={serviceUsers.eliminarUsuario}
       />
     );
   },
@@ -63,7 +63,7 @@ const actionsForm = (cell) => {
 
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormularioUsuarios
+    <FormUsers
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}
@@ -83,7 +83,7 @@ const configure = {
   actionsForm,
   setCreate,
   formCreate,
-  name: 'Usuarios',
+  name: 'Users',
 };
 
 export default configure;

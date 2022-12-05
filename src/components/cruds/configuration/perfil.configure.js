@@ -3,7 +3,7 @@ import React from 'react';
 import DeleteForm from '../../elements/crud/delete';
 import { setCreate, setsAsignar } from '../Buttonset';
 import Assign from '../../elements/crud/assign';
-import FormularioPerfiles from '../../forms/cruds/perfiles.cruds';
+import FormPerfiles from '../../forms/cruds/perfiles.cruds';
 import * as servicePerfil from '../../../services/perfil';
 import { actions } from '../../../constants/config';
 
@@ -18,7 +18,7 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioPerfiles
+      <FormPerfiles
         action={actions.READ}
         cell={cell}
         closeFunction={closeFunction}
@@ -28,7 +28,7 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioPerfiles
+      <FormPerfiles
         action={actions.UPDATE}
         cell={cell}
         closeFunction={closeFunction}
@@ -61,10 +61,10 @@ const forms = [
   },
 ];
 
-/** Formulario para el boton crear  */
+/** Form para el boton crear  */
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormularioPerfiles
+    <FormPerfiles
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}

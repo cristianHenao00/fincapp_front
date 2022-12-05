@@ -54,7 +54,7 @@ const pricesData = {
       icon: 'iconsminds-male-female',
       title: 'EQUIPO',
       price: '$17',
-      detail: 'Usuario/Mes Hasta 10 Usuarios',
+      detail: 'Usuario/Mes Hasta 10 Users',
       link: '#',
       features: [
         '24/5 soporte',
@@ -68,7 +68,7 @@ const pricesData = {
       icon: 'iconsminds-mens',
       title: 'EMPRESA',
       price: '$19',
-      detail: 'Usuario/Mes 10+ Usuarios',
+      detail: 'Usuario/Mes 10+ Users',
       link: '#',
       features: [
         '24/7 soporte',

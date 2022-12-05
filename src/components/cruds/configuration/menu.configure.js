@@ -1,5 +1,5 @@
 import React from 'react';
-import FormularioMenu from '../../forms/cruds/menus.crud';
+import FormMenu from '../../forms/cruds/menus.crud';
 import Actions from '../../elements/forms/actions';
 import DeleteForm from '../../elements/crud/delete';
 import * as serviceMenu from '../../../services/menu';
@@ -16,7 +16,7 @@ const size = ['5', '20', '15', '20', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioMenu
+      <FormMenu
         cell={cell}
         action={actions.READ}
         closeFunction={closeFunction}
@@ -26,7 +26,7 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioMenu
+      <FormMenu
         cell={cell}
         action={actions.UPDATE}
         closeFunction={closeFunction}
@@ -53,7 +53,7 @@ const actionsForm = (cell) => {
 
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormularioMenu
+    <FormMenu
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}

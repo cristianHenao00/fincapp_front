@@ -9,7 +9,7 @@ import { actions } from '../../../constants/config';
 import createNotification from '../../notificaciones/flotantes';
 import { buscarMenu, crearMenu, actualizarMenu } from '../../../services/menu';
 
-const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
+const FormMenu = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -161,4 +161,4 @@ const FormularioMenu = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormularioMenu;
+export default FormMenu;

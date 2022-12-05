@@ -1,5 +1,5 @@
 import React from 'react';
-import FormularioRol from '../../forms/cruds/roles.crud';
+import FormRol from '../../forms/cruds/roles.crud';
 import Assign from '../../elements/crud/assign';
 import DeleteForm from '../../elements/crud/delete';
 import * as ServiceRole from '../../../services/roles';
@@ -16,7 +16,7 @@ const size = ['70', '30'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioRol
+      <FormRol
         cell={cell}
         action={actions.READ}
         closeFunction={closeFunction}
@@ -26,7 +26,7 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioRol
+      <FormRol
         cell={cell}
         action={actions.UPDATE}
         closeFunction={closeFunction}
@@ -61,7 +61,7 @@ const forms = [
 
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormularioRol
+    <FormRol
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import configure from '../../../components/cruds/configuration/usuario.configure';
-import listarUsuarios from '../../../services/usuarios';
+import configure from '../../../components/cruds/configuration/users.configure';
+import listarUsers from '../../../services/users';
 import getData from '../../../components/cruds/arrangeData';
 import Table from '../../../components/elements/crud/table';
 
-const Usuarios = ({ match }) => {
+const Users = ({ match }) => {
   const [data, setData] = useState({});
-  const newData = getData(setData, listarUsuarios, data, configure.accessor);
+  const newData = getData(setData, listarUsers, data, configure.accessor);
 
   return (
     <>
@@ -27,4 +27,4 @@ const Usuarios = ({ match }) => {
   );
 };
 
-export default Usuarios;
+export default Users;

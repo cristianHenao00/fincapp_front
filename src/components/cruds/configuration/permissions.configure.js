@@ -1,7 +1,7 @@
 import React from 'react';
 import DeleteForm from '../../elements/crud/delete';
 import { setCreate, sets } from '../Buttonset';
-import FormularioModulo from '../../forms/cruds/modulos.crud';
+import FormModulo from '../../forms/cruds/modulos.crud';
 import * as service from '../../../services/permissions';
 import { actions } from '../../../constants/config';
 
@@ -16,7 +16,7 @@ const size = ['40', '20', '20'];
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioModulo
+      <FormModulo
         cell={cell}
         action={actions.READ}
         closeFunction={closeFunction}
@@ -26,7 +26,7 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormularioModulo
+      <FormModulo
         cell={cell}
         action={actions.UPDATE}
         closeFunction={closeFunction}
@@ -47,10 +47,10 @@ const forms = [
   },
 ];
 
-/** Formulario para el boton crear  */
+/** Form para el boton crear  */
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormularioModulo
+    <FormModulo
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}

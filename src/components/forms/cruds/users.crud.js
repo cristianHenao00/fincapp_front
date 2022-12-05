@@ -14,14 +14,14 @@ import {
   obtenerUsuario,
   crearUsuario,
   actualizarUsuario,
-} from '../../../services/usuarios';
+} from '../../../services/users';
 import { actions } from '../../../constants/config';
 
 import createNotification from '../../notificaciones/flotantes';
 
 import { listarPerfil } from '../../../services/perfil';
 
-const FormularioUsuarios = ({ cell, action, closeFunction, listFunction }) => {
+const FormUsers = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -396,4 +396,4 @@ const FormularioUsuarios = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormularioUsuarios;
+export default FormUsers;

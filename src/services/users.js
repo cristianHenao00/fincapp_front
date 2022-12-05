@@ -10,7 +10,7 @@ const headers = {
   Authorization: `Bearer ${currentUser.token}`,
 };
 
-const listarUsuarios = () => axios.get(`${baseUrl}/usuarios`, { headers });
+const listarUsers = () => axios.get(`${baseUrl}/usuarios`, { headers });
 
 export const obtenerUsuario = (id) =>
   axios.get(`${baseUrl}/usuarios/${id}`, { headers });
@@ -24,4 +24,4 @@ export const actualizarUsuario = (id, body) =>
 export const eliminarUsuario = (id) =>
   axios.delete(`${baseUrl}/usuarios/${id}`, { headers });
 
-export default listarUsuarios;
+export default listarUsers;

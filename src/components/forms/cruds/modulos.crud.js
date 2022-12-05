@@ -16,7 +16,7 @@ import {
   handlerGetSingleData,
 } from '../../elements/crud/handlerServices';
 
-const FormularioModulo = ({ cell, action, closeFunction, listFunction }) => {
+const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -119,4 +119,4 @@ const FormularioModulo = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormularioModulo;
+export default FormModulo;

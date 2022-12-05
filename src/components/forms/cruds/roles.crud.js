@@ -9,7 +9,7 @@ import { Colxx } from '../../common/CustomBootstrap';
 import { actions } from '../../../constants/config';
 import createNotification from '../../notificaciones/flotantes';
 
-const FormularioRol = ({ cell, action, closeFunction, listFunction }) => {
+const FormRol = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -94,4 +94,4 @@ const FormularioRol = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormularioRol;
+export default FormRol;
