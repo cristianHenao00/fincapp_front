@@ -37,3 +37,15 @@ export const modules = {
     },
   },
 };
+
+export const roles = {
+  name: {
+    required: { value: true, message: 'Nombre requerido' },
+    minLength: { value: 3, message: 'Debe tener 3 caracteres mínimo' },
+    maxLength: { value: 60, message: 'Debe tener 60 caracteres máximo' },
+    pattern: {
+      value: /^[a-zA-Z0-9( )_-]*$/,
+      message: 'No se permiten puntos ni caracteres especiales',
+    },
+  },
+};

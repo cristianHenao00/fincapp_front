@@ -34,13 +34,13 @@ const Assign = (props) => {
     setData,
     listFunction,
     data1,
-    ['id', 'nombre', 'checked'],
+    ['id', 'name', 'checked'],
     { id: cell.id }
   );
 
   if (newData.length > 0) {
     newData.forEach((v) => {
-      optionsChecklist.push({ tag: v.nombre, ID: v.id, valor: v.checked });
+      optionsChecklist.push({ tag: v.name, ID: v.id, valor: v.checked });
     });
   }
 

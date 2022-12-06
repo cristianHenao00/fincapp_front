@@ -1,13 +1,16 @@
-/* eslint-disable*/
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable import/named */
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { FormGroup, Label, Button, Form, Row } from 'reactstrap';
+import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
 import IntlMessages from '../../../helpers/IntlMessages';
-import { Colxx } from '../../common/CustomBootstrap';
 import { actions } from '../../../constants/config';
-import createNotification from '../../notificaciones/flotantes';
+import { createRole, getRole, updateRole } from '../../../services/roles';
+import { roles as validation } from '../valiadations';
+import {
+  handlerCUD,
+  handlerGetSingleData,
+} from '../../elements/crud/handlerServices';
+import Input from '../../elements/forms/input';
 
 const FormRol = ({ cell, action, closeFunction, listFunction }) => {
   const {
@@ -17,72 +20,45 @@ const FormRol = ({ cell, action, closeFunction, listFunction }) => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
+  useEffect(async () => {
     if (action === actions.UPDATE || action === actions.READ) {
+      const data = await handlerGetSingleData(getRole, cell.id, 'Buscando rol');
+      reset(data);
     }
   }, []);
 
   const onSubmit = (data) => {
-    console.log(data);
     if (action === actions.CREATE) {
+      handlerCUD(createRole, data, 'Creación', listFunction, closeFunction);
     } else if (action === actions.UPDATE) {
+      handlerCUD(
+        updateRole,
+        { id: cell.id, body: data },
+        'Actualización',
+        listFunction,
+        closeFunction
+      );
     }
+    reset();
   };
 
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
-          <Colxx xxs="12" className="nombre">
+          <Col>
             <FormGroup>
-              <Label for="nombre">
-                <IntlMessages id="Nombre" />
-              </Label>
-              <input
-                type="text"
-                className="form-control"
-                id="nombre"
+              <Input
+                title="Nombre"
+                name="name"
+                register={register}
+                validation={validation}
+                errors={errors}
+                size="12"
                 disabled={action === actions.READ}
-                {...register('nombre', { required: true, maxLength: 50 })}
               />
-              {errors.nombre?.type === 'required' && (
-                <div className="invalid-feedback d-block">
-                  El nombre es requerido
-                </div>
-              )}
-              {errors.nombre?.type === 'maxLength' && (
-                <div className="invalid-feedback d-block">
-                  El nombre debe contener máximo 50 caractéres
-                </div>
-              )}
             </FormGroup>
-          </Colxx>
-        </Row>
-        <Row>
-          <Colxx xxs="12" className="nombre">
-            <FormGroup>
-              <Label for="nombre">
-                <IntlMessages id="Nombre" />
-              </Label>
-              <input
-                type="text"
-                className="form-control"
-                id="nombre"
-                disabled={action === actions.READ}
-                {...register('nombre', { required: true, maxLength: 50 })}
-              />
-              {errors.nombre?.type === 'required' && (
-                <div className="invalid-feedback d-block">
-                  El nombre es requerido
-                </div>
-              )}
-              {errors.nombre?.type === 'maxLength' && (
-                <div className="invalid-feedback d-block">
-                  El nombre debe contener máximo 50 caractéres
-                </div>
-              )}
-            </FormGroup>
-          </Colxx>
+          </Col>
         </Row>
         {action !== actions.READ && (
           <Button outline color="success">
