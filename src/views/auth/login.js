@@ -33,7 +33,7 @@ const validateEmail = (value) => {
 };
 
 const Login = ({ history, loading, error, loginUserAction }) => {
-  const [email] = useState('sammy99marin@gmail.com');
+  const [email] = useState('soyadmin@gmail.com');
   const [password] = useState('12345678');
 
   useEffect(() => {
