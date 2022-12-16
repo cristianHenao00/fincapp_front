@@ -9,17 +9,17 @@ const processing = (data, accessor) => {
     data.forEach((row) => {
       const aux = {};
       accessor.forEach((ca) => {
-        if (ca !== false) {
-          if (typeof row[ca] === 'boolean') {
-            if (row[ca]) {
-              aux[ca] = 'Si';
-            } else {
-              aux[ca] = 'No';
-            }
-          } else {
-            aux[ca] = row[ca];
-          }
-        }
+        // if (ca !== false) {
+        //   if (typeof row[ca] === 'boolean') {
+        //     if (row[ca]) {
+        //       aux[ca] = 'Si';
+        //     } else {
+        //       aux[ca] = 'No';
+        //     }
+        //   } else {
+        aux[ca] = row[ca];
+        // }
+        // }
       });
       newData.push(aux);
     });

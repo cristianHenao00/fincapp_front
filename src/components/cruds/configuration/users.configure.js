@@ -1,27 +1,18 @@
 import React from 'react';
 import FormUsers from '../../forms/cruds/users.crud';
-import Actions from '../../elements/forms/actions';
+import Assign from '../../elements/crud/assign';
 import DeleteForm from '../../elements/crud/delete';
 import * as serviceUsers from '../../../services/users';
-import * as Sets from '../Buttonset';
+import { setCreate, setsAsignar } from '../Buttonset';
 import { actions } from '../../../constants/config';
+import { getRoles } from '../../../services/roles';
 
 // los titulos de las columnos de la tabla
-const headers = [
-  'Nombre completo',
-  'Dirección',
-  'Correo electrónico',
-  'Acciones',
-];
+const headers = ['Nombre completo', 'Correo electrónico', 'Acciones'];
 // las keys del json de la consulta a base de datos false cuando es una action
-const accessor = [
-  'informacionUsuario.nombreCompleto',
-  'informacionUsuario.direccion',
-  'informacionUsuario.correo',
-  false,
-];
+const accessor = ['name', 'email', false];
 // los tamaños en acho de las tablas
-const size = ['5', '20', '15', '20', '30'];
+const size = ['35', '35', '30'];
 
 const forms = [
   (listFunction, closeFunction, cell) => {
@@ -55,11 +46,19 @@ const forms = [
       />
     );
   },
-]; // conjunto de arrow funciones que llaman a formularios
-
-const actionsForm = (cell) => {
-  return <Actions sets={Sets.sets} forms={forms} cell={cell} />;
-};
+  (listFunction, closeFunction, cell) => {
+    return (
+      <Assign
+        listFunction={getRoles}
+        assignService={serviceUsers.getUsers}
+        unassignService={serviceUsers.getUsers}
+        closeFunction={closeFunction}
+        cell={cell}
+        msgs="agregar menu al modulo"
+      />
+    );
+  },
+];
 
 const formCreate = (listFunction, closeFunction) => {
   return (
@@ -71,8 +70,8 @@ const formCreate = (listFunction, closeFunction) => {
   );
 };
 
-const { setCreate, sets } = Sets;
 setCreate.title = 'Crear usuario';
+const sets = setsAsignar;
 
 const configure = {
   headers,
@@ -80,7 +79,6 @@ const configure = {
   size,
   sets,
   forms,
-  actionsForm,
   setCreate,
   formCreate,
   name: 'Users',

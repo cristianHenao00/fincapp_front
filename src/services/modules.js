@@ -29,17 +29,18 @@ export const updateModule = (props) => {
   const { id, body } = props;
   return axios.put(`${apiUrl}/modulos/actualizar/${id}`, body, { headers });
 };
-export const listarMenusModulo = (props) => {
+export const getMenus = (props) => {
   const { id } = props;
-  return axios.get(`${apiUrl}/mpm/buscarMPM/${id}`, { headers });
+  return axios.get(`${apiUrl}/modules/menus/${id}`, { headers });
 };
-export const asignarMenuModulo = (props) => {
+export const assignMenu = (props) => {
   const { body } = props;
-  return axios.post(`${apiUrl}/mpm`, body, { headers });
+  return axios.post(`${apiUrl}/modules/assign`, body, { headers });
 };
-export const eliminarMenuModulo = (props) => {
-  const { moduloId, menuId } = props;
-  return axios.delete(`${apiUrl}/mpm/eliminar/${moduloId}/${menuId}`, {
+export const unassignMenu = (props) => {
+  const { body } = props;
+  console.log(body);
+  return axios.post(`${apiUrl}/modules/unassign`, body, {
     headers,
   });
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import configure from '../../../components/cruds/configuration/menu.configure';
-import listarMenus from '../../../services/menu';
+import { getMenus } from '../../../services/menu';
 import Table from '../../../components/elements/crud/table';
 import ConfigureAction from '../../../components/cruds/configureAction';
 
@@ -10,7 +10,7 @@ const Menu = ({ match, menu }) => {
   const actions = ConfigureAction(configure, menu);
 
   const listFunction = () => {
-    listarMenus()
+    getMenus()
       .then((response) => {
         setData(response.data);
       })

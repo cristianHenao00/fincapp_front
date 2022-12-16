@@ -47,12 +47,12 @@ const forms = [
   (listFunction, closeFunction, cell) => {
     return (
       <Assign
-        listFunction={serviceModulo.listarMenusModulo}
-        AssignService={serviceModulo.asignarMenuModulo}
-        unAssignService={serviceModulo.eliminarMenuModulo}
+        listFunction={serviceModulo.getMenus}
+        assignService={serviceModulo.assignMenu}
+        unassignService={serviceModulo.unassignMenu}
         closeFunction={closeFunction}
         cell={cell}
-        msgs="agregar menu al modulo"
+        msgs="Agregar menu al modulo"
       />
     );
   },

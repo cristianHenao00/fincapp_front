@@ -13,14 +13,18 @@ import getData from '../../cruds/arrangeData';
  * @param {*} msgs mensaje de la cabecera
  * @param {*} listFunction servicio que enlista los elementos ha asignar
  * @param {*} assignService servicios para asignar un elemento a otro
- * @param {*} unAssignService servicios para desasignar un elemento a otro
+ * @param {*} unassignService servicios para desasignar un elemento a otro
  * @param {*} cell contiene los datos de la fila
  *
  * @returns
  */
-const Assign = (props) => {
-  const { msgs, listFunction, AssignService, unAssignService, cell } = props;
-
+const Assign = ({
+  msgs,
+  listFunction,
+  assignService,
+  unassignService,
+  cell,
+}) => {
   const { register, control, handleSubmit } = useForm();
 
   const [data1, setData] = useState({});
@@ -40,7 +44,7 @@ const Assign = (props) => {
 
   if (newData.length > 0) {
     newData.forEach((v) => {
-      optionsChecklist.push({ tag: v.name, ID: v.id, valor: v.checked });
+      optionsChecklist.push({ tag: v.name, theId: v.id, value: v.checked });
     });
   }
 
@@ -59,15 +63,15 @@ const Assign = (props) => {
             <Form onSubmit={handleSubmit(onSubmit)}>
               <CheckList
                 operations={{
-                  assign: AssignService,
-                  unAssign: unAssignService,
+                  assign: assignService,
+                  unassign: unassignService,
                 }}
                 name={msgs}
                 title={msgs}
                 register={register}
                 size="6"
                 fields={fields}
-                ID={cell.id}
+                parent={cell.id}
               />
             </Form>
           </CardBody>

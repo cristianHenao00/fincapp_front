@@ -3,7 +3,6 @@ import FormRol from '../../forms/cruds/roles.crud';
 import Assign from '../../elements/crud/assign';
 import DeleteForm from '../../elements/crud/delete';
 import * as ServiceRole from '../../../services/roles';
-import { getModules } from '../../../services/modules';
 import * as Sets from '../Buttonset';
 import { actions } from '../../../constants/config';
 
@@ -48,9 +47,9 @@ const forms = [
   (listFunction, closeFunction, cell) => {
     return (
       <Assign
-        listFunction={getModules} // funcion que devuelve la lista de elementos a asociar
-        AssignService={ServiceRole.getRoles} // función de asociación
-        unAssignService={ServiceRole.getRoles} // función de desasociación
+        listFunction={ServiceRole.getRoleModules} // funcion que devuelve la lista de elementos a asociar
+        assignService={ServiceRole.assignModule} // función de asociación
+        unassignService={ServiceRole.unassignModule} // función de desasociación
         closeFunction={closeFunction}
         cell={cell}
         msgs="agregar modulo al rol"

@@ -1,6 +1,5 @@
 import React from 'react';
-import { FormGroup } from 'reactstrap';
-import { Colxx } from '../../common/CustomBootstrap';
+import { CustomInput, FormGroup, Col } from 'reactstrap';
 import { handlerCUD } from '../crud/handlerServices';
 
 /**
@@ -14,30 +13,32 @@ import { handlerCUD } from '../crud/handlerServices';
  * @param {*} ID es el elemento al cual se le va asignar
  * @returns un checklist completo para utilizar
  */
-const CheckList = ({ name, register, title, size, fields, operations, ID }) => {
+const CheckList = ({
+  name,
+  register,
+  title,
+  size,
+  fields,
+  operations,
+  parent,
+}) => {
   // el id es el que va hacer agregado
-  const handlerChange = (id, e) => {
+  const handlerChange = (child, e) => {
+    const data = {
+      body: {
+        parent,
+        child,
+      },
+    };
     if (e.target.checked === true) {
-      const service = operations.assign;
-      const body = {
-        body: {
-          menuId: id,
-          moduloId: ID,
-        },
-      };
-      handlerCUD(service, body, 'Asignar');
+      handlerCUD(operations.assign, data, 'Asignar');
     } else {
-      const service = operations.unAssign;
-      const body = {
-        menuId: id,
-        moduloId: ID,
-      };
-      handlerCUD(service, body, 'Desasignar');
+      handlerCUD(operations.unassign, data, 'Desasignar');
     }
   };
   return (
     <>
-      <Colxx xxs={size}>
+      <Col xs={size}>
         <FormGroup>
           {title === undefined && (
             <h5>{name.charAt(0).toUpperCase() + name.slice(1)}</h5>
@@ -46,19 +47,19 @@ const CheckList = ({ name, register, title, size, fields, operations, ID }) => {
             <h5>{title.charAt(0).toUpperCase() + title.slice(1)}</h5>
           )}
           {fields.map((item, index) => (
-            <li key={item.id}>
-              <input
-                type="checkbox"
-                {...register(`${name}.${index}.valor`)}
-                defaultChecked={(item.valor === 'Si' && true) || false}
-                className="mr-3"
-                onChange={(e) => handlerChange(item.ID, e)}
-              />
-              {item.tag}
-            </li>
+            <CustomInput
+              type="checkbox"
+              key={`${
+                item.id
+              } ${Math.random()} ${Math.random()} ${Math.random()}`}
+              label={item.tag}
+              defaultChecked={item.value}
+              onChangeCapture={(e) => handlerChange(item.theId, e)}
+              {...register(`${name}.${index}.value`)}
+            />
           ))}
         </FormGroup>
-      </Colxx>
+      </Col>
     </>
   );
 };

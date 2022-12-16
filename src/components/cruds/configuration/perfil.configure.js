@@ -51,8 +51,8 @@ const forms = [
     return (
       <Assign
         listFunction={servicePerfil.modulosPerfil}
-        AssignService={servicePerfil.agregarModuloPerfil}
-        unAssignService={servicePerfil.deleteModulePerfil}
+        assignService={servicePerfil.agregarModuloPerfil}
+        unassignService={servicePerfil.deleteModulePerfil}
         closeFunction={closeFunction}
         cell={cell}
         msgs="agregar modulo al perfil"

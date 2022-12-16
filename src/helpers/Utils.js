@@ -173,3 +173,5 @@ export const setCurrentUser = (user) => {
     console.log('>>>>: src/helpers/Utils.js : setCurrentUser -> error', error);
   }
 };
+
+export const delay = (ms) => new Promise((res) => setTimeout(res, ms));

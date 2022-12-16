@@ -7,11 +7,11 @@ import * as Sets from '../Buttonset';
 import { actions } from '../../../constants/config';
 
 // los titulos de las columnos de la tabla
-const headers = ['id', 'Nombre', 'Descripción', 'Icono', 'Acciones'];
+const headers = ['Nombre', 'Descripción', 'Ruta', 'Acciones'];
 // las keys del json de la consulta a base de datos false cuando es una action
-const accessor = ['id', 'nombre', 'descripcion', 'icono', false];
+const accessor = ['name', 'description', 'path', false];
 // los tamaños en acho de las tablas
-const size = ['5', '20', '15', '20', '30'];
+const size = ['15', '40', '15', '30'];
 
 const forms = [
   (listFunction, closeFunction, cell) => {
@@ -41,7 +41,7 @@ const forms = [
         closeFunction={closeFunction}
         title="Menu"
         cell={cell}
-        service={serviceMenu.eliminarMenu}
+        service={serviceMenu.deleteMenu}
       />
     );
   },

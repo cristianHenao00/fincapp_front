@@ -8,11 +8,11 @@ const headers = {
   Authorization: `Bearer ${currentUser.token}`,
 };
 
-const listarMenus = () => axios.get(`${apiUrl}/menus`, { headers });
+export const getMenus = () => axios.get(`${apiUrl}/menus`, { headers });
 
-export const eliminarMenu = (props) => {
+export const deleteMenu = (props) => {
   const { id } = props;
-  return axios.delete(`${apiUrl}/menus/eliminar/${id}`, { headers });
+  return axios.delete(`${apiUrl}/menus/${id}`, { headers });
 };
 
 export const actualizarMenu = (props) => {
@@ -29,4 +29,4 @@ export const buscarMenu = (props) => {
   return axios.get(`${apiUrl}/menus/buscar/${id}`, { headers });
 };
 
-export default listarMenus;
+export default getMenus;
