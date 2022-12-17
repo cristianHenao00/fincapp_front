@@ -15,18 +15,17 @@ export const deleteMenu = (props) => {
   return axios.delete(`${apiUrl}/menus/${id}`, { headers });
 };
 
-export const actualizarMenu = (props) => {
+export const updateMenu = (props) => {
   const { id, body } = props;
-  return axios.put(`${apiUrl}/menus/actualizar/${id}`, body, { headers });
+  return axios.put(`${apiUrl}/menus/${id}`, body, { headers });
 };
-export const crearMenu = (props) => {
-  const { body } = props;
-  return axios.post(`${apiUrl}/menus/crear`, body, { headers });
+export const createMenu = (body) => {
+  return axios.post(`${apiUrl}/menus`, body, { headers });
 };
 
-export const buscarMenu = (props) => {
+export const getMenu = (props) => {
   const { id } = props;
-  return axios.get(`${apiUrl}/menus/buscar/${id}`, { headers });
+  return axios.get(`${apiUrl}/menus/${id}`, { headers });
 };
 
 export default getMenus;

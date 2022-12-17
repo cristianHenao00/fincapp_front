@@ -27,11 +27,11 @@ export const getRoleModules = (props) => {
 
 export const assignModule = (props) => {
   const { body } = props;
-  return axios.post(`${apiUrl}/modules/assign`, body, { headers });
+  return axios.post(`${apiUrl}/roles/module/assign`, body, { headers });
 };
 export const unassignModule = (props) => {
   const { body } = props;
-  return axios.delete(`${apiUrl}/modules/assign`, body, {
+  return axios.post(`${apiUrl}/roles/module/unassign`, body, {
     headers,
   });
 };

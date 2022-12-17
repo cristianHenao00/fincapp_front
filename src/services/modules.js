@@ -21,6 +21,7 @@ export const createModule = (body) => {
 };
 
 export const deleteModule = (props) => {
+  console.log(props);
   const { id } = props;
   return axios.delete(`${apiUrl}/modules/${id}`, { headers });
 };
@@ -35,12 +36,12 @@ export const getMenus = (props) => {
 };
 export const assignMenu = (props) => {
   const { body } = props;
-  return axios.post(`${apiUrl}/modules/assign`, body, { headers });
+  return axios.post(`${apiUrl}/modules/menu/assign`, body, { headers });
 };
 export const unassignMenu = (props) => {
   const { body } = props;
   console.log(body);
-  return axios.post(`${apiUrl}/modules/unassign`, body, {
+  return axios.post(`${apiUrl}/modules/menu/unassign`, body, {
     headers,
   });
 };
