@@ -38,7 +38,7 @@ function Table({
         Header: headers[i],
         cellClass: `text-muted w-${size[i]}`,
         Cell: function renderCell(cell) {
-          return actions(cell.data[cell.row.index]);
+          return actions(cell.data[cell.row.index], listFunction);
         },
       });
     } else {

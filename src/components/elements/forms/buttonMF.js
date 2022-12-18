@@ -11,8 +11,7 @@ import IntlMessages from '../../../helpers/IntlMessages';
     @param {origin} origin me indica en donde estoy utilizando el buttonmf en landingpage o dentro
     @returns crea un boton que contiene un modal y dentro un formulario
 */
-const ButtonMF = (props) => {
-  const { listFunction, set, form, cell, origen, service } = props;
+const ButtonMF = ({ listFunction, set, form, cell, origen, service }) => {
   const [modal, setModal] = useState(false);
   const [tooltip, setTooltip] = useState(false);
 

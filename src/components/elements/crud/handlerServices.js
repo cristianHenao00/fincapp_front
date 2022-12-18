@@ -11,12 +11,16 @@ export const handlerCUD = (
   props,
   msgs,
   listFunction,
-  closeFunction
+  closeFunction,
+  reset
 ) => {
   service(props)
     .then(() => {
       createNotification('success', msgs, 'Operación exitosa', 'filled');
       listFunction();
+      if (reset) {
+        reset();
+      }
       closeFunction();
     })
     .catch((error) => {

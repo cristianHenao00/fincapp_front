@@ -25,6 +25,11 @@ export const getRoleModules = (props) => {
   return axios.get(`${apiUrl}/roles/modules/${id}`, { headers });
 };
 
+export const getRolePermissions = (props) => {
+  const { id } = props;
+  return axios.get(`${apiUrl}/roles/permissions/${id}`, { headers });
+};
+
 export const assignModule = (props) => {
   const { body } = props;
   return axios.post(`${apiUrl}/roles/module/assign`, body, { headers });
@@ -32,6 +37,17 @@ export const assignModule = (props) => {
 export const unassignModule = (props) => {
   const { body } = props;
   return axios.post(`${apiUrl}/roles/module/unassign`, body, {
+    headers,
+  });
+};
+
+export const assignPermission = (props) => {
+  const { body } = props;
+  return axios.post(`${apiUrl}/roles/permissions/assign`, body, { headers });
+};
+export const unassignPermission = (props) => {
+  const { body } = props;
+  return axios.post(`${apiUrl}/roles/permissions/unassign`, body, {
     headers,
   });
 };

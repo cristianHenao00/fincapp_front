@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { UserRole } from '../../constants/config';
 import { getCurrentUser } from '../../helpers/Utils';
@@ -11,7 +12,7 @@ const menu = React.lazy(() => import('./admin/menu'));
 const roles = React.lazy(() => import('./admin/roles'));
 const permissions = React.lazy(() => import('./admin/permissions'));
 const categories = React.lazy(() => import('./admin/categories'));
-const product = React.lazy(() => import('./admin/products'));
+const admin_products = React.lazy(() => import('./admin/products'));
 
 const userHome = {
   [UserRole.administrator]: homeAdmin,
@@ -25,7 +26,7 @@ const components = {
   menu,
   permissions,
   categories,
-  product,
+  admin_products,
 };
 
 /**

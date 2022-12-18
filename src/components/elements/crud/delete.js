@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Button, Col, Row } from 'reactstrap';
+import React, { useState } from 'react';
+import { Button, Col, Row, Spinner } from 'reactstrap';
 import { handlerCUD } from './handlerServices';
 
 /**
@@ -14,8 +14,9 @@ import { handlerCUD } from './handlerServices';
  */
 const DeleteForm = ({ title, closeFunction, cell, service, listFunction }) => {
   const label = `¿Esta seguro que quiere eliminar ${title}?`;
-
+  const [loading, setLoading] = useState(false);
   const handlerDelete = () => {
+    setLoading(true);
     handlerCUD(
       service,
       { id: cell.id },
@@ -34,7 +35,11 @@ const DeleteForm = ({ title, closeFunction, cell, service, listFunction }) => {
       <Row>
         <Col xs="auto">
           <Button color="danger" onClick={(e) => handlerDelete()}>
-            Eliminar
+            {!loading ? (
+              'Eliminar'
+            ) : (
+              <Spinner animation="border" role="status" />
+            )}
           </Button>
         </Col>
         <Col xs="auto">

@@ -56,6 +56,18 @@ const forms = [
       />
     );
   },
+  (listFunction, closeFunction, cell) => {
+    return (
+      <Assign
+        listFunction={ServiceRole.getRolePermissions} // funcion que devuelve la lista de elementos a asociar
+        assignService={ServiceRole.assignPermission} // función de asociación
+        unassignService={ServiceRole.unassignPermission} // función de desasociación
+        closeFunction={closeFunction}
+        cell={cell}
+        msgs="agregar modulo al rol"
+      />
+    );
+  },
 ];
 
 const formCreate = (listFunction, closeFunction) => {
@@ -68,10 +80,10 @@ const formCreate = (listFunction, closeFunction) => {
   );
 };
 
-const { setCreate, setsAsignar } = Sets;
+const { setCreate, setsDoubleAsignar } = Sets;
 
 setCreate.title = 'Crear rol';
-const sets = setsAsignar;
+const sets = setsDoubleAsignar;
 
 const configure = {
   headers,

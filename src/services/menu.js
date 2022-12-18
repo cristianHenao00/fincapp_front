@@ -23,8 +23,7 @@ export const createMenu = (body) => {
   return axios.post(`${apiUrl}/menus`, body, { headers });
 };
 
-export const getMenu = (props) => {
-  const { id } = props;
+export const getMenu = (id) => {
   return axios.get(`${apiUrl}/menus/${id}`, { headers });
 };
 

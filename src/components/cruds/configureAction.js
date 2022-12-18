@@ -34,8 +34,15 @@ const ConfigureAction = (configure, menu) => {
   });
 
   /** Asigancion entre el listado de formularios y el de botones */
-  const assignActions = (cell) => {
-    return <Actions sets={sets} forms={forms} cell={cell} />;
+  const assignActions = (cell, listFunction) => {
+    return (
+      <Actions
+        sets={sets}
+        forms={forms}
+        cell={cell}
+        listFunction={listFunction}
+      />
+    );
   };
 
   return assignActions;
