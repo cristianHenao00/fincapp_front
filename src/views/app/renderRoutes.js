@@ -12,7 +12,8 @@ const menu = React.lazy(() => import('./admin/menu'));
 const roles = React.lazy(() => import('./admin/roles'));
 const permissions = React.lazy(() => import('./admin/permissions'));
 const categories = React.lazy(() => import('./admin/categories'));
-const admin_products = React.lazy(() => import('./admin/products'));
+const products = React.lazy(() => import('./admin/products'));
+const farms = React.lazy(() => import('./farmer/farms'));
 
 const userHome = {
   [UserRole.administrator]: homeAdmin,
@@ -26,7 +27,8 @@ const components = {
   menu,
   permissions,
   categories,
-  admin_products,
+  products,
+  farms,
 };
 
 /**

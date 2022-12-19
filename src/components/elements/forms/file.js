@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 // import {Button} from 'reactstrap';
 // import styles from './mystyle.module.css';
 
-const File = ({ setFile }) => {
+const File = ({ setFile, extensions }) => {
   const hiddenFileInput = useRef(null);
 
   const handleClick = () => {
@@ -31,6 +31,7 @@ const File = ({ setFile }) => {
       <input
         ref={hiddenFileInput}
         type="file"
+        accept={extensions}
         onChange={handleChange}
         style={{ display: 'none' }}
       />
