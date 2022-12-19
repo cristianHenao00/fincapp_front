@@ -5,7 +5,7 @@ import { FormGroup, Button, Form, Row, Col, CustomInput } from 'reactstrap';
 import Input from '../../elements/forms/input';
 import IntlMessages from '../../../helpers/IntlMessages';
 import { actions } from '../../../constants/config';
-import { modules as validation } from '../valiadations';
+import { menus as validation } from '../valiadations';
 import { createMenu, getMenu, updateMenu } from '../../../services/menu';
 import {
   handlerCUD,
@@ -126,6 +126,7 @@ const FormMenu = ({ cell, action, closeFunction, listFunction }) => {
                 onChangeCapture={(e) => {
                   setValue('read_action', e.target.checked);
                 }}
+                disabled={action === actions.READ}
               />
             </FormGroup>
           </Col>
@@ -139,6 +140,7 @@ const FormMenu = ({ cell, action, closeFunction, listFunction }) => {
                 onChangeCapture={(e) => {
                   setValue('create_action', e.target.checked);
                 }}
+                disabled={action === actions.READ}
               />
             </FormGroup>
           </Col>
@@ -151,6 +153,7 @@ const FormMenu = ({ cell, action, closeFunction, listFunction }) => {
                 onChangeCapture={(e) => {
                   setValue('update_action', e.target.checked);
                 }}
+                disabled={action === actions.READ}
               />
             </FormGroup>
           </Col>
@@ -163,6 +166,7 @@ const FormMenu = ({ cell, action, closeFunction, listFunction }) => {
                 onChangeCapture={(e) => {
                   setValue('delete_action', e.target.checked);
                 }}
+                disabled={action === actions.READ}
               />
             </FormGroup>
           </Col>

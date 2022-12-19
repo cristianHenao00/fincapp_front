@@ -2,21 +2,21 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import Input from '../../elements/forms/input';
 import IntlMessages from '../../../helpers/IntlMessages';
 import { actions } from '../../../constants/config';
-import { modules as validation } from '../valiadations';
 import {
-  getModule,
-  createModule,
-  updateModule,
-} from '../../../services/modules';
+  createCategory,
+  getCategory,
+  updateCategory,
+} from '../../../services/categories';
+import { categories as validation } from '../valiadations';
 import {
   handlerCUD,
   handlerGetSingleData,
 } from '../../elements/crud/handlerServices';
+import Input from '../../elements/forms/input';
 
-const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
+const FormCategory = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -26,7 +26,11 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
 
   useEffect(async () => {
     if (action === actions.UPDATE || action === actions.READ) {
-      const data = await handlerGetSingleData(getModule, cell.id, 'Carga');
+      const data = await handlerGetSingleData(
+        getCategory,
+        cell.id,
+        'Buscando categoria'
+      );
       reset(data);
     }
   }, []);
@@ -34,7 +38,7 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
   const onSubmit = (data) => {
     if (action === actions.CREATE) {
       handlerCUD(
-        createModule,
+        createCategory,
         data,
         'Creación',
         listFunction,
@@ -43,7 +47,7 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
       );
     } else if (action === actions.UPDATE) {
       handlerCUD(
-        updateModule,
+        updateCategory,
         { id: cell.id, body: data },
         'Actualización',
         listFunction,
@@ -70,51 +74,6 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
             </FormGroup>
           </Col>
         </Row>
-
-        <Row>
-          <Col>
-            <FormGroup>
-              <Input
-                title="Descripción"
-                name="description"
-                register={register}
-                validation={validation}
-                errors={errors}
-                size="12"
-                disabled={action === actions.READ}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <FormGroup>
-              <Input
-                title="Ruta"
-                name="path"
-                register={register}
-                validation={validation}
-                errors={errors}
-                size="12"
-                disabled={action === actions.READ}
-              />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup>
-              <Input
-                title="Ícono"
-                name="icon"
-                register={register}
-                validation={validation}
-                errors={errors}
-                size="12"
-                disabled={action === actions.READ}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
         {action !== actions.READ && (
           <Button outline color="success">
             <IntlMessages id="Guardar" />
@@ -125,4 +84,4 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormModulo;
+export default FormCategory;

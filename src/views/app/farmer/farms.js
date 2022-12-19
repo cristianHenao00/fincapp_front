@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import configure from '../../../components/cruds/configuration/category.configure';
-import { getCategories } from '../../../services/categories';
+import configure from '../../../components/cruds/configuration/farms.configure';
+import { getFarms } from '../../../services/farms';
 import Table from '../../../components/elements/crud/table';
 import ConfigureAction from '../../../components/cruds/configureAction';
 
@@ -10,7 +10,7 @@ const Category = ({ match, menu }) => {
   const actions = ConfigureAction(configure, menu);
 
   const listFunction = () => {
-    getCategories()
+    getFarms()
       .then((response) => {
         setData(response.data);
       })

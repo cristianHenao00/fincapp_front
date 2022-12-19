@@ -2,40 +2,51 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import Input from '../../elements/forms/input';
 import IntlMessages from '../../../helpers/IntlMessages';
 import { actions } from '../../../constants/config';
-import { modules as validation } from '../valiadations';
-import {
-  getModule,
-  createModule,
-  updateModule,
-} from '../../../services/modules';
+import { createFarm, getFarm, updateFarm } from '../../../services/farms';
+import { farms as validation } from '../valiadations';
 import {
   handlerCUD,
   handlerGetSingleData,
 } from '../../elements/crud/handlerServices';
+import Input from '../../elements/forms/input';
+import FileComplete from '../../elements/forms/fileComplete';
+import { getCurrentUser } from '../../../helpers/Utils';
 
-const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
+const user = getCurrentUser();
+
+const FormFarm = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
   useEffect(async () => {
     if (action === actions.UPDATE || action === actions.READ) {
-      const data = await handlerGetSingleData(getModule, cell.id, 'Carga');
+      const data = await handlerGetSingleData(
+        getFarm,
+        cell.id,
+        'Buscando categoria'
+      );
       reset(data);
     }
   }, []);
 
   const onSubmit = (data) => {
     if (action === actions.CREATE) {
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        console.log(key, data[key]);
+        formData.append(key, data[key]);
+      });
+      formData.append('id_user', user.id);
       handlerCUD(
-        createModule,
-        data,
+        createFarm,
+        formData,
         'Creación',
         listFunction,
         closeFunction,
@@ -43,7 +54,7 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
       );
     } else if (action === actions.UPDATE) {
       handlerCUD(
-        updateModule,
+        updateFarm,
         { id: cell.id, body: data },
         'Actualización',
         listFunction,
@@ -70,13 +81,25 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
             </FormGroup>
           </Col>
         </Row>
-
         <Row>
-          <Col>
+          <Col xs="7">
             <FormGroup>
               <Input
-                title="Descripción"
-                name="description"
+                title="Dirección"
+                name="address"
+                register={register}
+                validation={validation}
+                errors={errors}
+                size="12"
+                disabled={action === actions.READ}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs="5">
+            <FormGroup>
+              <Input
+                title="Matrícula inmobiliaria"
+                name="number_license"
                 register={register}
                 validation={validation}
                 errors={errors}
@@ -86,35 +109,21 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
             </FormGroup>
           </Col>
         </Row>
-
-        <Row>
-          <Col>
+        <Row className="justify-content-center">
+          <Col xs="6">
             <FormGroup>
-              <Input
-                title="Ruta"
-                name="path"
+              <FileComplete
+                title="imagen"
+                name="image"
                 register={register}
-                validation={validation}
-                errors={errors}
+                setValue={setValue}
                 size="12"
-                disabled={action === actions.READ}
-              />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup>
-              <Input
-                title="Ícono"
-                name="icon"
-                register={register}
-                validation={validation}
-                errors={errors}
-                size="12"
-                disabled={action === actions.READ}
+                extensions="image/png, image/jpeg, image/jpg"
               />
             </FormGroup>
           </Col>
         </Row>
+
         {action !== actions.READ && (
           <Button outline color="success">
             <IntlMessages id="Guardar" />
@@ -125,4 +134,4 @@ const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormModulo;
+export default FormFarm;

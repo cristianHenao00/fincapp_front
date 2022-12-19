@@ -1,34 +1,44 @@
 import React from 'react';
-import { FormGroup } from 'reactstrap';
+import { FormGroup, Col, Label } from 'reactstrap';
 
-import { Colxx } from 'components/common/CustomBootstrap';
-
-export default function Select(props) {
-  const { nombre, register, validaciones, titulo, opciones, errors } = props;
+export default function Select({
+  name,
+  register,
+  validation,
+  title,
+  options,
+  errors,
+  disabled,
+  size,
+}) {
   return (
     <>
-      <Colxx xxs="4" className="mb-4">
+      <Col xs={size} className="mb-4">
         <FormGroup>
-          <h5>{titulo}</h5>
+          <Label for={name}>{title}</Label>
           <select
             type="text"
             className="form-control"
-            id={nombre}
-            {...register(nombre, validaciones[nombre])}
+            id={name}
+            {...register(name, validation[name])}
+            disabled={disabled}
           >
-            {opciones[nombre].map((v) => (
-              <option value={v.value} key={v.value}>
-                {v.mensaje}
+            <option value={null} key="null">
+              Seleccione una opción
+            </option>
+            {options?.map((option) => (
+              <option value={option.id} key={option.id}>
+                {option.name}
               </option>
             ))}
           </select>
-          {errors?.[nombre]?.type !== undefined && (
+          {errors?.[name]?.type !== undefined && (
             <div className="invalid-feedback d-block">
-              {errors?.[nombre]?.message}
+              {errors?.[name]?.message}
             </div>
           )}
         </FormGroup>
-      </Colxx>
+      </Col>
     </>
   );
 }
