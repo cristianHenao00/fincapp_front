@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable */
-import LogoName from '../../assets/logos/black.svg'
+import LogoName from '../../assets/logos/black.svg';
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 
@@ -38,7 +38,7 @@ import { getCurrentUser } from '../../helpers/Utils';
 // import TopnavEasyAccess from './Topnav.EasyAccess';
 import TopnavNotifications from './Topnav.Notifications';
 import TopnavDarkSwitch from './Topnav.DarkSwitch';
-
+import IntlMessages from '../../helpers/IntlMessages';
 
 const TopNav = ({
   // intl,
@@ -182,6 +182,10 @@ const TopNav = ({
     logoutUserAction(history);
   };
 
+  const handleReseat = () => {
+
+  };
+
   const menuButtonClick = (e, _clickCount, _conClassnames) => {
     e.preventDefault();
 
@@ -277,7 +281,7 @@ const TopNav = ({
             <IntlMessages id="user.buy" />
           </a>
         </div> */}
-      </div>    
+      </div>
 
       <img src={LogoName} height="40"></img>
 
@@ -312,6 +316,9 @@ const TopNav = ({
               <DropdownItem>Características</DropdownItem>          
               <DropdownItem>Soporte</DropdownItem>
               <DropdownItem divider /> */}
+              <DropdownItem onClick={() => handleReseat()}>
+                Cambiar Contraseña
+              </DropdownItem>
               <DropdownItem onClick={() => handleLogout()}>
                 Cerrar Sesión
               </DropdownItem>

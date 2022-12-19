@@ -3,6 +3,6 @@ import { apiUrl } from '../constants/config';
 
 const baseUrl = apiUrl;
 
-const Registro = (body) => axios.post(`${baseUrl}/auth/registro`, body);
+const Registro = (body) => axios.post(`${baseUrl}/signin`, body);
 
 export default Registro;
