@@ -19,7 +19,7 @@ import { actions } from '../../../constants/config';
 
 import createNotification from '../../notificaciones/flotantes';
 
-import { listarPerfil } from '../../../services/perfil';
+import { getRoles } from '../../../services/roles';
 
 const FormUsers = ({ cell, action, closeFunction, listFunction }) => {
   const {
@@ -31,7 +31,7 @@ const FormUsers = ({ cell, action, closeFunction, listFunction }) => {
 
   const [departamentos, setDepartamentos] = useState([]);
   const [municipios, setMunicipios] = useState([]);
-  const [perfiles, setPerfiles] = useState([]);
+  const [roles, setRoles] = useState([]);
 
   const onChangeDepartamento = (event) => {
     listarMunicipios(event.target.value).then((response) =>
@@ -40,8 +40,8 @@ const FormUsers = ({ cell, action, closeFunction, listFunction }) => {
   };
 
   useEffect(() => {
-    listarPerfil().then((response) => {
-      setPerfiles(response.data);
+    getRoles().then((response) => {
+      setRoles(response.data);
     });
     listarDepartamentos().then((response) => setDepartamentos(response.data));
     if (action === actions.UPDATE || action === actions.READ) {
@@ -360,9 +360,9 @@ const FormUsers = ({ cell, action, closeFunction, listFunction }) => {
                 {...register('idPerfil', { required: true })}
               >
                 <option value="">Seleccione uno</option>
-                {perfiles.map((p) => (
+                {roles.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.nombre}
+                    {p.name}
                   </option>
                 ))}
               </select>

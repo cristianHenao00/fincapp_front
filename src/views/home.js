@@ -117,7 +117,7 @@ const Home = () => {
                     <a
                       style={{ fontSize: '15px' }}
                       className="btn btn-light btn-xl mr-2 mb-2"
-                      href="user/register/option"
+                      href="user/register"
                       target="_blank"
                       rel="noreferrer"
                     >
