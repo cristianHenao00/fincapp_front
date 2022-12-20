@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import configure from '../../../components/cruds/configuration/category.configure';
-import { getCategories } from '../../../services/categories';
-import Table from '../../../components/elements/crud/table';
-import ConfigureAction from '../../../components/cruds/configureAction';
+import configure from 'components/cruds/configuration/category.configure';
+import { getCategories } from 'services/categories';
+import Table from 'components/elements/crud/table';
+import ConfigureAction from 'components/cruds/configureAction';
 
 const Category = ({ match, menu }) => {
   const [data, setData] = useState([]);

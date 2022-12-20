@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Row, Card, CardTitle } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import { Colxx } from '../components/common/CustomBootstrap';
-import IntlMessages from '../helpers/IntlMessages';
-import { adminRoot } from '../constants/config';
+import { Colxx } from 'components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
+import { adminRoot } from 'constants/config';
 
 const Unauthorized = () => {
   useEffect(() => {

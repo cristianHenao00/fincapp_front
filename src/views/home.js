@@ -6,8 +6,8 @@ import { scroller } from 'react-scroll';
 // import Headroom from 'react-headroom';
 // import GlideComponent from 'components/carousel/GlideComponent';
 import { Modal, ModalBody } from 'reactstrap';
-import { adminRoot } from '../constants/config';
-import LogoName from '../assets/logos/white-full.svg';
+import { adminRoot } from 'constants/config';
+import LogoName from 'assets/logos/white-full.svg';
 
 // import ButtonMF from 'components/elements/forms/buttonMF';
 // import Empresa from 'components/formulariosElementos/empresa/empresa';

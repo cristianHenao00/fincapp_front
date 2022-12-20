@@ -1,21 +1,35 @@
 import React from 'react';
+import FormStock from 'components/forms/cruds/stock.crud';
+import Actions from 'components/elements/forms/actions';
 import DeleteForm from 'components/elements/crud/delete';
-import { setCreate, setsAsignar } from 'components/cruds/Buttonset';
-import Assign from 'components/elements/crud/assign';
-import FormModulo from 'components/forms/cruds/modulos.crud';
-import * as serviceModulo from 'services/modules';
+import * as serviceFarm from 'services/farms';
+import * as Sets from 'components/cruds/Buttonset';
 import { actions } from 'constants/config';
 
-const headers = ['Nombre', 'Descripción', 'Ruta', 'Acciones'];
+const headers = [
+  'Producto',
+  'Valor',
+  'Cantidad',
+  'Finca',
+  'Visibilidad',
+  'Acciones',
+];
 
-const accessor = ['name', 'description', 'path', false];
+const accessor = [
+  'product_name',
+  'value',
+  'amount',
+  'farm_name',
+  'visibility',
+  false,
+];
 
-const size = ['20', '40', '10', '30'];
+const size = ['15', '15', '15', '20', '10', '25'];
 
 const forms = [
   (listFunction, closeFunction, cell) => {
     return (
-      <FormModulo
+      <FormStock
         cell={cell}
         action={actions.READ}
         closeFunction={closeFunction}
@@ -25,7 +39,7 @@ const forms = [
   },
   (listFunction, closeFunction, cell) => {
     return (
-      <FormModulo
+      <FormStock
         cell={cell}
         action={actions.UPDATE}
         closeFunction={closeFunction}
@@ -38,29 +52,28 @@ const forms = [
       <DeleteForm
         listFunction={listFunction}
         closeFunction={closeFunction}
-        title={`el módulo ${cell.name}`}
+        title="Fincas"
         cell={cell}
-        service={serviceModulo.deleteModule}
-      />
-    );
-  },
-  (listFunction, closeFunction, cell) => {
-    return (
-      <Assign
-        listFunction={serviceModulo.getMenus}
-        assignService={serviceModulo.assignMenu}
-        unassignService={serviceModulo.unassignMenu}
-        closeFunction={closeFunction}
-        cell={cell}
-        msgs="Agregar menu al modulo"
+        service={serviceFarm.deleteFarm}
       />
     );
   },
 ];
 
+const actionsForm = (cell, listFunction) => {
+  return (
+    <Actions
+      sets={Sets.sets}
+      forms={forms}
+      cell={cell}
+      listFunction={listFunction}
+    />
+  );
+};
+
 const formCreate = (listFunction, closeFunction) => {
   return (
-    <FormModulo
+    <FormStock
       action={actions.CREATE}
       closeFunction={closeFunction}
       listFunction={listFunction}
@@ -68,8 +81,8 @@ const formCreate = (listFunction, closeFunction) => {
   );
 };
 
-setCreate.title = 'Crear modulo';
-const sets = setsAsignar;
+const { setCreate, sets } = Sets;
+setCreate.title = 'Crear producción';
 
 const configure = {
   headers,
@@ -77,9 +90,10 @@ const configure = {
   size,
   sets,
   forms,
+  actionsForm,
   setCreate,
   formCreate,
-  name: 'Módulos',
+  name: 'Producción',
 };
 
 export default configure;

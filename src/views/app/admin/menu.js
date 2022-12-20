@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import configure from '../../../components/cruds/configuration/menu.configure';
-import { getMenus } from '../../../services/menu';
-import Table from '../../../components/elements/crud/table';
-import ConfigureAction from '../../../components/cruds/configureAction';
+import configure from 'components/cruds/configuration/menu.configure';
+import { getMenus } from 'services/menu';
+import Table from 'components/elements/crud/table';
+import ConfigureAction from 'components/cruds/configureAction';
 
 const Menu = ({ match, menu }) => {
   const [data, setData] = useState([]);

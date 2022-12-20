@@ -1,4 +1,4 @@
-import { NotificationManager } from '../common/react-notifications';
+import { NotificationManager } from 'components/common/react-notifications';
 
 const createNotification = (type, title, message, className) => {
   const cName = className || '';

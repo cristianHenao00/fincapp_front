@@ -1,10 +1,10 @@
 import React from 'react';
-import FormCategory from '../../forms/cruds/categories.crud';
-import Actions from '../../elements/forms/actions';
-import DeleteForm from '../../elements/crud/delete';
-import * as serviceCategory from '../../../services/categories';
-import * as Sets from '../Buttonset';
-import { actions } from '../../../constants/config';
+import FormCategory from 'components/forms/cruds/categories.crud';
+import Actions from 'components/elements/forms/actions';
+import DeleteForm from 'components/elements/crud/delete';
+import * as serviceCategory from 'services/categories';
+import * as Sets from 'components/cruds/Buttonset';
+import { actions } from 'constants/config';
 
 const headers = ['Nombre', 'Acciones'];
 

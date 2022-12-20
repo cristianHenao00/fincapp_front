@@ -2,12 +2,12 @@ import React from 'react';
 import { Row, Card, CardTitle, CardBody } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerUser } from '../../redux/actions';
+import { registerUser } from 'redux/actions';
 
-import IntlMessages from '../../helpers/IntlMessages';
-import { Colxx } from '../../components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
+import { Colxx } from 'components/common/CustomBootstrap';
 
-import Registro from '../../components/forms/register';
+import Registro from 'components/forms/register';
 
 const Register = () => {
   return (

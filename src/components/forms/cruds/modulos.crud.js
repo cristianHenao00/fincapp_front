@@ -2,19 +2,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import Input from '../../elements/forms/input';
-import IntlMessages from '../../../helpers/IntlMessages';
-import { actions } from '../../../constants/config';
-import { modules as validation } from '../valiadations';
-import {
-  getModule,
-  createModule,
-  updateModule,
-} from '../../../services/modules';
+import Input from 'components/elements/forms/input';
+import IntlMessages from 'helpers/IntlMessages';
+import { actions } from 'constants/config';
+import { getModule, createModule, updateModule } from 'services/modules';
 import {
   handlerCUD,
   handlerGetSingleData,
-} from '../../elements/crud/handlerServices';
+} from 'components/elements/crud/handlerServices';
+import { modules as validation } from '../valiadations';
 
 const FormModulo = ({ cell, action, closeFunction, listFunction }) => {
   const {

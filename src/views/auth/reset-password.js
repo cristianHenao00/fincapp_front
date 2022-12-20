@@ -3,10 +3,10 @@ import { Row, Card, CardTitle, Label, FormGroup, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { connect } from 'react-redux';
-import { resetPassword } from '../../redux/actions';
-import IntlMessages from '../../helpers/IntlMessages';
-import { Colxx } from '../../components/common/CustomBootstrap';
-import { NotificationManager } from '../../components/common/react-notifications';
+import { resetPassword } from 'redux/actions';
+import IntlMessages from 'helpers/IntlMessages';
+import { Colxx } from 'components/common/CustomBootstrap';
+import { NotificationManager } from 'components/common/react-notifications';
 
 const validateNewPassword = (values) => {
   const { newPassword, newPasswordAgain } = values;

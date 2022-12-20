@@ -1,16 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
-import { Row } from 'reactstrap';
-import { Colxx } from 'components/common/CustomBootstrap';
+import { Row, Col } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
-
 import { SliderTooltip, RangeTooltip } from 'components/common/SliderTooltips';
 
 const SliderExamples = () => {
   return (
     <Row>
-      <Colxx xxs="12" sm="6">
+      <Col xxs="12" sm="6">
         <label>
           <IntlMessages id="form-components.double-slider" />
         </label>
@@ -22,9 +20,9 @@ const SliderExamples = () => {
           allowCross={false}
           pushable={100}
         />
-      </Colxx>
+      </Col>
 
-      <Colxx xxs="12" sm="6">
+      <Col xxs="12" sm="6">
         <label>
           <IntlMessages id="form-components.single-slider" />
         </label>
@@ -35,7 +33,7 @@ const SliderExamples = () => {
           className="mb-5"
           step={500}
         />
-      </Colxx>
+      </Col>
     </Row>
   );
 };

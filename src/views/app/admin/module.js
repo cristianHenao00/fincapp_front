@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import ConfigureAction from '../../../components/cruds/configureAction';
-import configure from '../../../components/cruds/configuration/module.configure';
-import Table from '../../../components/elements/crud/table';
-import { getModules } from '../../../services/modules';
-import { handlerGetData } from '../../../components/elements/crud/handlerServices';
+import ConfigureAction from 'components/cruds/configureAction';
+import configure from 'components/cruds/configuration/module.configure';
+import Table from 'components/elements/crud/table';
+import { getModules } from 'services/modules';
+import { handlerGetData } from 'components/elements/crud/handlerServices';
 
 const Module = ({ match, menu }) => {
   const [data, setData] = useState([]);

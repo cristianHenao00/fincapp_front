@@ -1,4 +1,4 @@
-import { getCurrentLanguage } from '../../helpers/Utils';
+import { getCurrentLanguage } from 'helpers/Utils';
 import { CHANGE_LOCALE } from '../contants';
 
 const INIT_STATE = {

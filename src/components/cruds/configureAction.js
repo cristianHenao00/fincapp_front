@@ -1,6 +1,6 @@
 import React from 'react';
-import Actions from '../elements/forms/actions';
-import { actions } from '../../constants/config';
+import Actions from 'components/elements/forms/actions';
+import { actions } from 'constants/config';
 
 const ConfigureAction = (configure, menu) => {
   /** Determina que acciones se muestran dependiendo de la configuración del menu */

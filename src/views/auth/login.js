@@ -1,16 +1,16 @@
 /* eslint-disable */
-import LogoName from '../../assets/logos/300709.svg'
+import LogoName from 'assets/logos/300709.svg'
 import React, { useState, useEffect } from 'react';
 import { Row, Card, CardTitle, Label, FormGroup, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Formik, Form, Field } from 'formik';
-import { NotificationManager } from '../../components/common/react-notifications';
+import { NotificationManager } from 'components/common/react-notifications';
 
-import { loginUser } from '../../redux/actions';
-import { Colxx } from '../../components/common/CustomBootstrap';
-import IntlMessages from '../../helpers/IntlMessages';
+import { loginUser } from 'redux/actions';
+import { Colxx } from 'components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
 
 const validatePassword = (value) => {
   let error;

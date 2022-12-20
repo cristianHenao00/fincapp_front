@@ -4,22 +4,20 @@ import { useForm } from 'react-hook-form';
 
 import { FormGroup, Label, Button, Form, Row } from 'reactstrap';
 
-import { Colxx } from '../../common/CustomBootstrap';
-import IntlMessages from '../../../helpers/IntlMessages';
+import { Colxx } from 'components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
 
-import listarDepartamentos, {
-  listarMunicipios,
-} from '../../../services/ubicacion';
+import listarDepartamentos, { listarMunicipios } from 'services/ubicacion';
 import {
   obtenerUsuario,
   crearUsuario,
   actualizarUsuario,
-} from '../../../services/users';
-import { actions } from '../../../constants/config';
+} from 'services/users';
+import { actions } from 'constants/config';
 
-import createNotification from '../../notificaciones/flotantes';
+import createNotification from 'components/notificaciones/flotantes';
 
-import { getRoles } from '../../../services/roles';
+import { getRoles } from 'services/roles';
 
 const FormUsers = ({ cell, action, closeFunction, listFunction }) => {
   const {

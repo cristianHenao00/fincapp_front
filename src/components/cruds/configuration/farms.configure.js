@@ -1,10 +1,10 @@
 import React from 'react';
-import FormFarm from '../../forms/cruds/farms.crud';
-import Actions from '../../elements/forms/actions';
-import DeleteForm from '../../elements/crud/delete';
-import * as serviceFarm from '../../../services/farms';
-import * as Sets from '../Buttonset';
-import { actions } from '../../../constants/config';
+import FormFarm from 'components/forms/cruds/farms.crud';
+import Actions from 'components/elements/forms/actions';
+import DeleteForm from 'components/elements/crud/delete';
+import * as serviceFarm from 'services/farms';
+import * as Sets from 'components/cruds/Buttonset';
+import { actions } from 'constants/config';
 
 const headers = ['Nombre', 'Dirección', 'Matrícula inmobiliaria', 'Acciones'];
 

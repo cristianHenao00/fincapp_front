@@ -1,10 +1,10 @@
 import React from 'react';
-import FormRol from '../../forms/cruds/roles.crud';
-import Assign from '../../elements/crud/assign';
-import DeleteForm from '../../elements/crud/delete';
-import * as ServiceRole from '../../../services/roles';
-import * as Sets from '../Buttonset';
-import { actions } from '../../../constants/config';
+import FormRol from 'components/forms/cruds/roles.crud';
+import Assign from 'components/elements/crud/assign';
+import DeleteForm from 'components/elements/crud/delete';
+import * as ServiceRole from 'services/roles';
+import * as Sets from 'components/cruds/Buttonset';
+import { actions } from 'constants/config';
 
 const headers = ['Nombre', 'Acciones'];
 

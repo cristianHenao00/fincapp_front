@@ -5,7 +5,7 @@ import {
   localeOptions,
   themeColorStorageKey,
   themeRadiusStorageKey,
-} from '../constants/config';
+} from 'constants/config';
 
 export const mapOrder = (array, order, key) => {
   // eslint-disable-next-line func-names

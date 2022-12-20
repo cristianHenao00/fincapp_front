@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import { Card, CardBody, Badge } from 'reactstrap';
-import { Colxx } from '../common/CustomBootstrap';
+import { Colxx } from 'components/common/CustomBootstrap';
 
 const SurveyDetailCard = ({ survey }) => {
   return (

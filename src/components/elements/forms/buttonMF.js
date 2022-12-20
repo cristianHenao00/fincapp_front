@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Button, Modal, Tooltip, ModalBody } from 'reactstrap';
-import IntlMessages from '../../../helpers/IntlMessages';
+import IntlMessages from 'helpers/IntlMessages';
 
 /**  
     @param {listFunction} listFunction metodo que refresca la pagina

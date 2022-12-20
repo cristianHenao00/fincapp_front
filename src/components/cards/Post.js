@@ -10,9 +10,9 @@ import {
   Input,
   Button,
 } from 'reactstrap';
-import SingleLightbox from '../pages/SingleLightbox';
-import VideoPlayer from '../common/VideoPlayer';
-import CommentWithLikes from '../pages/CommentWithLikes';
+import SingleLightbox from 'components/pages/SingleLightbox';
+import VideoPlayer from 'components/common/VideoPlayer';
+import CommentWithLikes from 'components/pages/CommentWithLikes';
 
 const renderLikeAndCommentCount = (messages) => {
   return (

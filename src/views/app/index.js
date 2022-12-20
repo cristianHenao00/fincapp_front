@@ -2,9 +2,9 @@
 import React, { Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Modules from 'services/modules';
+import AppLayout from 'layout/AppLayout';
 import renderComponent from './renderRoutes';
-import Modules from '../../services/modules';
-import AppLayout from '../../layout/AppLayout';
 
 const App = ({ match }) => {
   const paths = [];

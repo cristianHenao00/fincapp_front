@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 
 import { FormGroup, Label, Button, Form, Row } from 'reactstrap';
 
-import IntlMessages from '../../../helpers/IntlMessages';
-import { Colxx } from '../../common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
+import { Colxx } from 'components/common/CustomBootstrap';
 
 import listarDepartamentos, {
   listarMunicipios,
-} from '../../../services/ubicacion';
-import Registro from '../../../services/registro';
+} from 'services/ubicacion';
+import Registro from 'services/registro';
 
 const FormUsuario = () => {
   const {

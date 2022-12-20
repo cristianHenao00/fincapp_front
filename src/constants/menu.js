@@ -1,5 +1,5 @@
 import { adminRoot } from './config';
-import Modules from '../services/modules';
+import Modules from 'services/modules';
 
 function BuildMenu1(name, path, icon) {
   const title = name;

@@ -2,17 +2,17 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import IntlMessages from '../../../helpers/IntlMessages';
-import { actions } from '../../../constants/config';
-import { createFarm, getFarm, updateFarm } from '../../../services/farms';
-import { farms as validation } from '../valiadations';
+import IntlMessages from 'helpers/IntlMessages';
+import { actions } from 'constants/config';
+import { createFarm, getFarm, updateFarm } from 'services/farms';
 import {
   handlerCUD,
   handlerGetSingleData,
-} from '../../elements/crud/handlerServices';
-import Input from '../../elements/forms/input';
-import FileComplete from '../../elements/forms/fileComplete';
-import { getCurrentUser } from '../../../helpers/Utils';
+} from 'components/elements/crud/handlerServices';
+import Input from 'components/elements/forms/input';
+import FileComplete from 'components/elements/forms/fileComplete';
+import { getCurrentUser } from 'helpers/Utils';
+import { farms as validation } from '../valiadations';
 
 const user = getCurrentUser();
 

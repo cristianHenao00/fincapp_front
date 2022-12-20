@@ -2,15 +2,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Label, Button, Form, Row } from 'reactstrap';
-import { Colxx } from '../../common/CustomBootstrap';
-import IntlMessages from '../../../helpers/IntlMessages';
+import { Colxx } from 'components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
 import {
   buscarPerfil,
   crearPerfil,
   actualizarPerfil,
-} from '../../../services/perfil';
-import createNotification from '../../notificaciones/flotantes';
-import { actions } from '../../../constants/config';
+} from 'services/perfil';
+import createNotification from 'components/notificaciones/flotantes';
+import { actions } from 'constants/config';
 
 const FormPerfiles = ({ cell, action, closeFunction, listFunction }) => {
   const {

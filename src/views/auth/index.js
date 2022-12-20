@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import UserLayout from '../../layout/UserLayout';
+import UserLayout from 'layout/UserLayout';
 
 const Login = React.lazy(() => import('./login'));
 const Register = React.lazy(() => import('./register'));

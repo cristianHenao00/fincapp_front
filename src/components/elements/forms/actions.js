@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { Row } from 'reactstrap';
-import { Colxx } from '../../common/CustomBootstrap';
+import { Colxx } from 'components/common/CustomBootstrap';
 import ButtonMF from './buttonMF';
 
 /**

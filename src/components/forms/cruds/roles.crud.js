@@ -2,15 +2,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import IntlMessages from '../../../helpers/IntlMessages';
-import { actions } from '../../../constants/config';
-import { createRole, getRole, updateRole } from '../../../services/roles';
-import { roles as validation } from '../valiadations';
+import IntlMessages from 'helpers/IntlMessages';
+import { actions } from 'constants/config';
+import { createRole, getRole, updateRole } from 'services/roles';
 import {
   handlerCUD,
   handlerGetSingleData,
-} from '../../elements/crud/handlerServices';
-import Input from '../../elements/forms/input';
+} from 'components/elements/crud/handlerServices';
+import Input from 'components/elements/forms/input';
+import { roles as validation } from '../valiadations';
 
 const FormRol = ({ cell, action, closeFunction, listFunction }) => {
   const {

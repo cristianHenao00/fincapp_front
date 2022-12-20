@@ -1,11 +1,11 @@
 import React from 'react';
 
-import DeleteForm from '../../elements/crud/delete';
-import { setCreate, setsAsignar } from '../Buttonset';
-import Assign from '../../elements/crud/assign';
-import FormPerfiles from '../../forms/cruds/perfiles.cruds';
-import * as servicePerfil from '../../../services/perfil';
-import { actions } from '../../../constants/config';
+import DeleteForm from 'components/elements/crud/delete';
+import { setCreate, setsAsignar } from 'components/cruds/Buttonset';
+import Assign from 'components/elements/crud/assign';
+import FormPerfiles from 'components/forms/cruds/perfiles.cruds';
+import * as servicePerfil from 'services/perfil';
+import { actions } from 'constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = ['Nombre', 'Descripción', 'Fecha de creación', 'Acciones'];
