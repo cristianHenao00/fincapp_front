@@ -53,6 +53,10 @@ const App = ({ match }) => {
               }
               return routes;
             })}
+            <Route
+              path={`${match.url}/public/farm_user/:farm_id`}
+              component={(props) => renderComponent('farm_user', props)}
+            />
           </Switch>
         </Suspense>
       </div>

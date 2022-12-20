@@ -17,6 +17,9 @@ const categories = React.lazy(() => import('./admin/categories'));
 const products = React.lazy(() => import('./admin/products'));
 const farms = React.lazy(() => import('./farmer/farms'));
 const stock = React.lazy(() => import('./farmer/stock'));
+const history = React.lazy(() => import('./users/history'));
+const cart = React.lazy(() => import('./users/carts'));
+const farm_user = React.lazy(() => import('./users/farm'));
 
 const userHome = {
   [UserRole.administrator]: homeAdmin,
@@ -35,6 +38,9 @@ const components = {
   products,
   farms,
   stock,
+  history,
+  cart,
+  farm_user,
 };
 
 /**
