@@ -15,6 +15,12 @@ const headersFile = {
 
 export const getFarms = () => axios.get(`${apiUrl}/farms`, { headers });
 
+export const getFarmsUsers = () =>
+  axios.get(`${apiUrl}/farms/users`, { headers });
+
+export const getFarmProducts = ({ id }) =>
+  axios.get(`${apiUrl}/farms/products/${id}`, { headers });
+
 export const getFarmsFarmer = ({ id }) =>
   axios.get(`${apiUrl}/farms/farmer/${id}`, { headers });
 

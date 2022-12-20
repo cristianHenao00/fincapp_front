@@ -1,13 +1,12 @@
 import React from 'react';
-import { Card, CustomInput, Badge } from 'reactstrap';
+import { Card, CustomInput, Badge, Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { ContextMenuTrigger } from 'react-contextmenu';
-import { Colxx } from 'components/common/CustomBootstrap';
 
 const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
   return (
-    <Colxx xxs="12" className="mb-3">
+    <Col xs="12" className="mb-3">
       <ContextMenuTrigger id="menu_id" data={product.id} collect={collect}>
         <Card
           onClick={(event) => onCheckItem(event, product.id)}
@@ -47,7 +46,7 @@ const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
           </div>
         </Card>
       </ContextMenuTrigger>
-    </Colxx>
+    </Col>
   );
 };
 
