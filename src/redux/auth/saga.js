@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
-import { auth } from '../../helpers/Firebase';
-import { adminRoot, currentUser } from '../../constants/config';
-import { setCurrentUser } from '../../helpers/Utils';
+import { auth } from 'helpers/Firebase';
+import { adminRoot, currentUser } from 'constants/config';
+import { setCurrentUser } from 'helpers/Utils';
 import {
   LOGIN_USER,
   REGISTER_USER,
@@ -22,7 +22,7 @@ import {
   resetPasswordError,
 } from './actions';
 
-import login, { getModulesMenus } from '../../services/login';
+import login, { getModulesMenus } from 'services/login';
 
 export function* watchLoginUser() {
   // eslint-disable-next-line no-use-before-define

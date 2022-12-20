@@ -1,10 +1,10 @@
 import React from 'react';
-import FormMenu from '../../forms/cruds/menus.crud';
-import Actions from '../../elements/forms/actions';
-import DeleteForm from '../../elements/crud/delete';
-import * as serviceMenu from '../../../services/menu';
-import * as Sets from '../Buttonset';
-import { actions } from '../../../constants/config';
+import FormMenu from 'components/forms/cruds/menus.crud';
+import Actions from 'components/elements/forms/actions';
+import DeleteForm from 'components/elements/crud/delete';
+import * as serviceMenu from 'services/menu';
+import * as Sets from 'components/cruds/Buttonset';
+import { actions } from 'constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = ['Nombre', 'Descripción', 'Ruta', 'Acciones'];

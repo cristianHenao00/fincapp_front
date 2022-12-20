@@ -1,23 +1,22 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import ConfigureAction from 'components/cruds/configureAction';
-import configure from 'components/cruds/configuration/products.configure';
+import configure from 'components/cruds/configuration/stock.configure';
+import { getStocksFarmer } from 'services/stocks';
 import Table from 'components/elements/crud/table';
-import { getProductsFarmer } from 'services/products';
-import { handlerGetData } from 'components/elements/crud/handlerServices';
+import ConfigureAction from 'components/cruds/configureAction';
 import { getCurrentUser } from 'helpers/Utils';
+import { handlerGetData } from 'components/elements/crud/handlerServices';
 
 const idCurrentUser = getCurrentUser().id;
 
-const Product = ({ match, menu }) => {
+const Stock = ({ match, menu }) => {
   const [data, setData] = useState([]);
 
   const actions = ConfigureAction(configure, menu);
 
   const listFunction = async () => {
     const newData = await handlerGetData(
-      getProductsFarmer,
-      'Listando productos',
+      getStocksFarmer,
+      'Listando producción',
       true,
       { id: idCurrentUser }
     );
@@ -45,4 +44,4 @@ const Product = ({ match, menu }) => {
     </>
   );
 };
-export default Product;
+export default Stock;

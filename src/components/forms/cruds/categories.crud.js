@@ -2,19 +2,19 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import IntlMessages from '../../../helpers/IntlMessages';
-import { actions } from '../../../constants/config';
+import IntlMessages from 'helpers/IntlMessages';
+import { actions } from 'constants/config';
 import {
   createCategory,
   getCategory,
   updateCategory,
-} from '../../../services/categories';
-import { categories as validation } from '../valiadations';
+} from 'services/categories';
 import {
   handlerCUD,
   handlerGetSingleData,
-} from '../../elements/crud/handlerServices';
-import Input from '../../elements/forms/input';
+} from 'components/elements/crud/handlerServices';
+import Input from 'components/elements/forms/input';
+import { categories as validation } from '../valiadations';
 
 const FormCategory = ({ cell, action, closeFunction, listFunction }) => {
   const {

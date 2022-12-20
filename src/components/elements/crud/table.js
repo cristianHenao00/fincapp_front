@@ -2,12 +2,12 @@
 import React, { useMemo } from 'react';
 import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
 import { Card, CardBody, CardTitle, Row, Button } from 'reactstrap';
-import { Colxx, Separator } from '../../common/CustomBootstrap';
-import DatatablePagination from '../../DatatablePagination';
+import { Colxx, Separator } from 'components/common/CustomBootstrap';
+import DatatablePagination from 'components/DatatablePagination';
 import ColumnFilter from './filters';
-import ButtonMF from '../forms/buttonMF';
+import ButtonMF from 'components/elements/forms/buttonMF';
 import './styles.css';
-import Breadcrumb from '../../../containers/navs/Breadcrumb';
+import Breadcrumb from 'containers/navs/Breadcrumb';
 
 /**
  * @param {headers} lista con la cabecera de la tabla
@@ -32,14 +32,28 @@ function Table({
 }) {
   const arrayMemo = [];
 
-  headers.forEach((v, i) => {
-    if (headers[i] === 'Acciones') {
+  accessor.forEach((v, i) => {
+    if (!accessor[i]) {
       arrayMemo.push({
         Header: headers[i],
         cellClass: `text-muted w-${size[i]}`,
         Cell: function renderCell(cell) {
           return actions(cell.data[cell.row.index], listFunction);
         },
+      });
+    } else if (accessor[i] === 'visibility') {
+      arrayMemo.push({
+        Header: headers[i],
+        cellClass: `text-muted w-${size[i]}`,
+        Cell: function renderCell(cell) {
+          return (
+            <h6>
+              {cell.data[cell.row.index]['visibility'] ? 'Activo' : 'Inactivo'}
+            </h6>
+          );
+        },
+        sortType: 'basic',
+        Filter: ColumnFilter,
       });
     } else {
       arrayMemo.push({

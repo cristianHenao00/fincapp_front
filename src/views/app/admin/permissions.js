@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import configure from '../../../components/cruds/configuration/permissions.configure';
-import { getPermissions } from '../../../services/permissions';
-import Table from '../../../components/elements/crud/table';
-import ConfigureAction from '../../../components/cruds/configureAction';
-import { handlerGetData } from '../../../components/elements/crud/handlerServices';
+import configure from 'components/cruds/configuration/permissions.configure';
+import { getPermissions } from 'services/permissions';
+import Table from 'components/elements/crud/table';
+import ConfigureAction from 'components/cruds/configureAction';
+import { handlerGetData } from 'components/elements/crud/handlerServices';
 
 const Menu = ({ match, menu }) => {
   const [data, setData] = useState([]);

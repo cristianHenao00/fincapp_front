@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { apiUrl } from '../constants/config';
-import { getCurrentUser } from '../helpers/Utils';
+import { apiUrl } from 'constants/config';
+import { getCurrentUser } from 'helpers/Utils';
 
 const baseUrl = apiUrl;
 const currentUser = getCurrentUser();

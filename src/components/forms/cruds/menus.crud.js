@@ -2,15 +2,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col, CustomInput } from 'reactstrap';
-import Input from '../../elements/forms/input';
-import IntlMessages from '../../../helpers/IntlMessages';
-import { actions } from '../../../constants/config';
-import { menus as validation } from '../valiadations';
-import { createMenu, getMenu, updateMenu } from '../../../services/menu';
+import Input from 'components/elements/forms/input';
+import IntlMessages from 'helpers/IntlMessages';
+import { actions } from 'constants/config';
+import { createMenu, getMenu, updateMenu } from 'services/menu';
 import {
   handlerCUD,
   handlerGetSingleData,
-} from '../../elements/crud/handlerServices';
+} from 'components/elements/crud/handlerServices';
+import { menus as validation } from '../valiadations';
 
 const FormMenu = ({ cell, action, closeFunction, listFunction }) => {
   const {

@@ -6,8 +6,8 @@ import {
   setCurrentColor,
   getCurrentRadius,
   setCurrentRadius,
-} from '../../helpers/Utils';
-import { colors } from '../../constants/config';
+} from 'helpers/Utils';
+import { colors } from 'constants/config';
 
 const ColorSwitcher = () => {
   const containerRef = useRef();

@@ -1,4 +1,4 @@
-import { ThemeColors } from '../../helpers/ThemeColors';
+import { ThemeColors } from 'helpers/ThemeColors';
 
 export const chartTooltip = {
   backgroundColor: ThemeColors().foregroundColor,

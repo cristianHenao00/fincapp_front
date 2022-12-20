@@ -152,3 +152,33 @@ export const farms = {
     maxLength: { value: 30, message: 'Debe tener 30 caracteres máximo' },
   },
 };
+
+export const stock = {
+  id_product: {
+    required: { value: true, message: 'Producto es requerido' },
+    valueAsNumber: { value: true, message: '' },
+    validate: {
+      isNull: (value) => !isNaN(value) || 'Producto requerida',
+    },
+  },
+  value: {
+    required: { value: true, message: 'Valor requerido' },
+    minLength: { value: 1, message: 'Debe tener 1 caracteres mínimo' },
+    maxLength: { value: 10, message: 'Debe tener 10 caracteres máximo' },
+    pattern: {
+      value: /^[0-9]*$/,
+      message: 'Solo se permiten números',
+    },
+    valueAsNumber: { value: true, message: '' },
+  },
+  amount: {
+    required: { value: true, message: 'Cantidad requerida' },
+    minLength: { value: 1, message: 'Debe tener 1 caracteres mínimo' },
+    maxLength: { value: 10, message: 'Debe tener 10 caracteres máximo' },
+    pattern: {
+      value: /^[0-9]*$/,
+      message: 'Solo se permiten números',
+    },
+    valueAsNumber: { value: true, message: '' },
+  },
+};

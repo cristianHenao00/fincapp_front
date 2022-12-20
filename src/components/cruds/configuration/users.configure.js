@@ -1,11 +1,11 @@
 import React from 'react';
-import FormUsers from '../../forms/cruds/users.crud';
-import Assign from '../../elements/crud/assign';
-import DeleteForm from '../../elements/crud/delete';
-import * as serviceUsers from '../../../services/users';
-import { setCreate, setsAsignar } from '../Buttonset';
-import { actions } from '../../../constants/config';
-import { getRoles } from '../../../services/roles';
+import FormUsers from 'components/forms/cruds/users.crud';
+import Assign from 'components/elements/crud/assign';
+import DeleteForm from 'components/elements/crud/delete';
+import { setCreate, setsAsignar } from 'components/cruds/Buttonset';
+import * as serviceUsers from 'services/users';
+import { actions } from 'constants/config';
+import { getRoles } from 'services/roles';
 
 // los titulos de las columnos de la tabla
 const headers = ['Nombre completo', 'Correo electrónico', 'Acciones'];

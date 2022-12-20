@@ -2,7 +2,7 @@ import {
   defaultMenuType,
   subHiddenBreakpoint,
   menuHiddenBreakpoint,
-} from '../../constants/config';
+} from 'constants/config';
 import {
   MENU_SET_CLASSNAMES,
   MENU_CONTAINER_ADD_CLASSNAME,

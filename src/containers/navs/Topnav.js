@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable */
-import LogoName from '../../assets/logos/black.svg';
+import LogoName from 'assets/logos/black.svg';
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 
@@ -22,7 +22,7 @@ import {
   clickOnMobileMenu,
   logoutUser,
   changeLocale,
-} from '../../redux/actions';
+} from 'redux/actions';
 
 import {
   // menuHiddenBreakpoint,
@@ -31,14 +31,14 @@ import {
   isDarkSwitchActive,
   // buyUrl,
   adminRoot,
-} from '../../constants/config';
+} from 'constants/config';
 
-import { MobileMenuIcon, MenuIcon } from '../../components/svg';
-import { getCurrentUser } from '../../helpers/Utils';
+import { MobileMenuIcon, MenuIcon } from 'components/svg';
+import { getCurrentUser } from 'helpers/Utils';
 // import TopnavEasyAccess from './Topnav.EasyAccess';
 import TopnavNotifications from './Topnav.Notifications';
 import TopnavDarkSwitch from './Topnav.DarkSwitch';
-import IntlMessages from '../../helpers/IntlMessages';
+import IntlMessages from 'helpers/IntlMessages';
 
 const TopNav = ({
   // intl,

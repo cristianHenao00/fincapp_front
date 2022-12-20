@@ -1,9 +1,9 @@
 import React from 'react';
-import DeleteForm from '../../elements/crud/delete';
-import { setCreate, sets } from '../Buttonset';
-import FormModulo from '../../forms/cruds/modulos.crud';
-import * as service from '../../../services/permissions';
-import { actions } from '../../../constants/config';
+import DeleteForm from 'components/elements/crud/delete';
+import { setCreate, sets } from 'components/cruds/Buttonset';
+import FormModulo from 'components/forms/cruds/modulos.crud';
+import * as service from 'services/permissions';
+import { actions } from 'constants/config';
 
 // los titulos de las columnos de la tabla
 const headers = ['URL', 'Método', 'Acciones'];

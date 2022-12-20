@@ -1,11 +1,13 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { UserRole } from '../../constants/config';
-import { getCurrentUser } from '../../helpers/Utils';
+import { UserRole } from 'constants/config';
+import { getCurrentUser } from 'helpers/Utils';
 
 const currentUser = getCurrentUser();
 
 const homeAdmin = React.lazy(() => import('./admin/home'));
+const homeUser = React.lazy(() => import('./users/home'));
+const homeFarmer = React.lazy(() => import('./farmer/home'));
 const users = React.lazy(() => import('./admin/users'));
 const modules = React.lazy(() => import('./admin/module'));
 const menu = React.lazy(() => import('./admin/menu'));
@@ -14,9 +16,12 @@ const permissions = React.lazy(() => import('./admin/permissions'));
 const categories = React.lazy(() => import('./admin/categories'));
 const products = React.lazy(() => import('./admin/products'));
 const farms = React.lazy(() => import('./farmer/farms'));
+const stock = React.lazy(() => import('./farmer/stock'));
 
 const userHome = {
   [UserRole.administrator]: homeAdmin,
+  [UserRole.user]: homeUser,
+  [UserRole.farmer]: homeFarmer,
 };
 
 const components = {
@@ -29,6 +34,7 @@ const components = {
   categories,
   products,
   farms,
+  stock,
 };
 
 /**

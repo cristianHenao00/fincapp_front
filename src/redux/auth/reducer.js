@@ -1,5 +1,5 @@
-import { getCurrentUser } from '../../helpers/Utils';
-import { isAuthGuardActive, currentUser } from '../../constants/config';
+import { getCurrentUser } from 'helpers/Utils';
+import { isAuthGuardActive, currentUser } from 'constants/config';
 import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,

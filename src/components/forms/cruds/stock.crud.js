@@ -2,24 +2,23 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup, Button, Form, Row, Col } from 'reactstrap';
-import Input from 'components/elements/forms/input';
 import IntlMessages from 'helpers/IntlMessages';
 import { actions } from 'constants/config';
-import { createProduct, getProduct, updateProduct } from 'services/products';
-import { getCategories } from 'services/categories';
+import { createStock, getStock, updateStock } from 'services/stocks';
 import {
   handlerCUD,
   handlerGetData,
   handlerGetSingleData,
 } from 'components/elements/crud/handlerServices';
-import Select from 'components/elements/forms/select';
-import { getFarmsFarmer } from 'services/farms';
+import Input from 'components/elements/forms/input';
 import { getCurrentUser } from 'helpers/Utils';
-import { products as validation } from '../valiadations';
+import Select from 'components/elements/forms/select';
+import { getProductsFarmer } from 'services/products';
+import { stock as validation } from '../valiadations';
 
-const idCurrentUser = getCurrentUser().id;
+const user = getCurrentUser();
 
-const FormProduct = ({ cell, action, closeFunction, listFunction }) => {
+const FormStock = ({ cell, action, closeFunction, listFunction }) => {
   const {
     register,
     handleSubmit,
@@ -27,32 +26,39 @@ const FormProduct = ({ cell, action, closeFunction, listFunction }) => {
     formState: { errors },
   } = useForm();
 
-  const [categories, setCategories] = useState([]);
-  const [farms, setFarms] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(async () => {
     if (action === actions.UPDATE || action === actions.READ) {
-      const data = await handlerGetSingleData(getProduct, cell.id, 'Carga');
+      const data = await handlerGetSingleData(
+        getStock,
+        cell.id,
+        'Buscando categoria'
+      );
       reset(data);
     }
-    const categoriesData = await handlerGetData(
-      getCategories,
+    const productsData = await handlerGetData(
+      getProductsFarmer,
       'Opciones',
-      false
+      false,
+      {
+        id: user.id,
+      }
     );
-    setCategories(categoriesData);
-
-    const farmsData = await handlerGetData(getFarmsFarmer, 'Opciones', false, {
-      id: idCurrentUser,
-    });
-    setFarms(farmsData);
+    setProducts(productsData);
   }, []);
 
   const onSubmit = (data) => {
     if (action === actions.CREATE) {
+      const body = {
+        ...data,
+        published: new Date(),
+        visibility: true,
+      };
+      console.log(body);
       handlerCUD(
-        createProduct,
-        data,
+        createStock,
+        body,
         'Creación',
         listFunction,
         closeFunction,
@@ -60,14 +66,12 @@ const FormProduct = ({ cell, action, closeFunction, listFunction }) => {
       );
     } else if (action === actions.UPDATE) {
       handlerCUD(
-        updateProduct,
+        updateStock,
         { id: cell.id, body: data },
         'Actualización',
         listFunction,
-        closeFunction,
-        reset
+        closeFunction
       );
-      reset();
     }
   };
 
@@ -75,48 +79,50 @@ const FormProduct = ({ cell, action, closeFunction, listFunction }) => {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
-          <Col>
+          <Col xs="6">
+            <FormGroup>
+              <Select
+                title="Producto"
+                name="id_product"
+                register={register}
+                validation={validation}
+                errors={errors}
+                size="12"
+                options={products}
+                disabled={action === actions.READ}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs="3">
             <FormGroup>
               <Input
-                title="Nombre"
-                name="name"
+                title="Valor"
+                name="value"
                 register={register}
                 validation={validation}
                 errors={errors}
                 size="12"
+                type="number"
                 disabled={action === actions.READ}
               />
             </FormGroup>
           </Col>
-          <Col>
+          <Col xs="3">
             <FormGroup>
-              <Select
-                title="Categoría"
-                name="id_category"
+              <Input
+                title="Cantidad"
+                name="amount"
                 register={register}
                 validation={validation}
                 errors={errors}
                 size="12"
-                options={categories}
-                disabled={action === actions.READ}
-              />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup>
-              <Select
-                title="Finca"
-                name="id_farm"
-                register={register}
-                validation={validation}
-                errors={errors}
-                size="12"
-                options={farms}
+                type="number"
                 disabled={action === actions.READ}
               />
             </FormGroup>
           </Col>
         </Row>
+
         {action !== actions.READ && (
           <Button outline color="success">
             <IntlMessages id="Guardar" />
@@ -127,4 +133,4 @@ const FormProduct = ({ cell, action, closeFunction, listFunction }) => {
   );
 };
 
-export default FormProduct;
+export default FormStock;

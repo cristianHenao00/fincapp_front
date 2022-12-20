@@ -2,7 +2,7 @@
 import React from 'react';
 import { Col, FormGroup, Label } from 'reactstrap';
 
-import ValidationError from '../../../components/elements/forms/validationError'
+import ValidationError from 'components/elements/forms/validationError'
 
 /**
  * 

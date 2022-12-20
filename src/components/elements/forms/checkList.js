@@ -1,6 +1,6 @@
 import React from 'react';
 import { CustomInput, FormGroup, Col } from 'reactstrap';
-import { handlerCUD } from '../crud/handlerServices';
+import { handlerCUD } from 'components/elements/crud/handlerServices';
 
 /**
  *

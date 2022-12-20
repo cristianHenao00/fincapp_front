@@ -17,7 +17,7 @@ import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 
 import { DataListIcon, ThumbListIcon, ImageListIcon } from 'components/svg';
-import Breadcrumb from '../navs/Breadcrumb';
+import Breadcrumb from 'navs/Breadcrumb';
 
 const ListPageHeading = ({
   intl,

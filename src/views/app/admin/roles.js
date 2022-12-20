@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import configure from '../../../components/cruds/configuration/roles.configure';
-import { getRoles } from '../../../services/roles';
-import ConfigureAction from '../../../components/cruds/configureAction';
-import Table from '../../../components/elements/crud/table';
-import { handlerGetData } from '../../../components/elements/crud/handlerServices';
+import configure from 'components/cruds/configuration/roles.configure';
+import { getRoles } from 'services/roles';
+import ConfigureAction from 'components/cruds/configureAction';
+import Table from 'components/elements/crud/table';
+import { handlerGetData } from 'components/elements/crud/handlerServices';
 
 const Role = ({ match, menu }) => {
   const [data, setData] = useState([]);

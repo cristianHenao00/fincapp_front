@@ -12,10 +12,10 @@ import {
   addContainerClassname,
   changeDefaultClassnames,
   changeSelectedMenuHasSubItems,
-} from '../../redux/actions';
-import IntlMessages from '../../helpers/IntlMessages';
+} from 'redux/actions';
+import IntlMessages from 'helpers/IntlMessages';
 
-import menuItems from '../../constants/menu';
+import menuItems from 'constants/menu';
 
 class Sidebar extends Component {
   constructor(props) {

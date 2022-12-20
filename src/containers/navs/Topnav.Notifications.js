@@ -7,8 +7,8 @@ import {
   NavLink,
 } from 'reactstrap';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import notifications from '../../data/notifications';
-import { adminRoot } from '../../constants/config';
+import notifications from 'data/notifications';
+import { adminRoot } from 'constants/config';
 
 const NotificationItem = ({ img, title, date }) => {
   return (
