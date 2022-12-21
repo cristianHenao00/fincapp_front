@@ -15,7 +15,7 @@ export default function Select({
     <>
       <Col xs={size} className="mb-4">
         <FormGroup>
-          <Label for={name}>{title}</Label>
+          {title && <Label for={name}>{title}</Label>}
           <select
             type="text"
             className="form-control"
