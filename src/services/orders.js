@@ -41,4 +41,12 @@ export const getOrder = (id) => {
   return axios.get(`${apiUrl}/orders/${id}`, { headers });
 };
 
+export const getHistoryOrder = ({ id }) => {
+  return axios.get(`${apiUrl}/orders/history/${id}`, { headers });
+};
+
+export const getOrdersCartUser = () => {
+  return axios.get(`${apiUrl}/orders/cart`, { headers });
+};
+
 export default getOrders;
