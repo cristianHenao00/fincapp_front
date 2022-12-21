@@ -31,7 +31,7 @@ export const handlerCUD = (
 
 export const handlerGetData = (
   service,
-  msgs,
+  msgs = '',
   showMessage = true,
   props = {}
 ) => {

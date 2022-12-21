@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import configure from 'components/cruds/configuration/farms.configure';
-import { getFarmsFarmer } from 'services/farms';
+import { getFarms } from 'services/farms';
 import Table from 'components/elements/crud/table';
 import ConfigureAction from 'components/cruds/configureAction';
 import { handlerGetData } from 'components/elements/crud/handlerServices';
-import { getCurrentUser } from 'helpers/Utils';
 
-const idCurrentUser = getCurrentUser().id;
-
-const Category = ({ match, menu }) => {
+const AllFarms = ({ match, menu }) => {
   const [data, setData] = useState([]);
 
   const actions = ConfigureAction(configure, menu);
 
   const listFunction = async () => {
-    const newData = await handlerGetData(
-      getFarmsFarmer,
-      'Listando producción',
-      true,
-      { id: idCurrentUser }
-    );
+    const newData = await handlerGetData(getFarms, 'Listando producción', true);
     setData(newData);
   };
 
@@ -44,4 +36,4 @@ const Category = ({ match, menu }) => {
     </>
   );
 };
-export default Category;
+export default AllFarms;

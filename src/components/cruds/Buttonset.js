@@ -1,6 +1,8 @@
+import { actions } from 'constants/config';
+
 export const setsAsignar = [
   {
-    title: 'ver',
+    title: actions.READ,
     label: 'ver',
     listFunction: '',
     size: 'lg',
@@ -8,7 +10,7 @@ export const setsAsignar = [
     icon: 'glyph-icon simple-icon-eye m-1',
   },
   {
-    title: 'actualizar',
+    title: actions.UPDATE,
     label: 'actualizar',
     listFunction: '',
     size: 'lg',
@@ -16,7 +18,7 @@ export const setsAsignar = [
     icon: 'glyph-icon simple-icon-pencil m-1',
   },
   {
-    title: 'eliminar',
+    title: actions.DELETE,
     label: 'eliminar',
     size: 'lg',
     color: 'danger',
@@ -34,7 +36,7 @@ export const setsAsignar = [
 
 export const setsDoubleAsignar = [
   {
-    title: 'ver',
+    title: actions.READ,
     label: 'ver',
     listFunction: '',
     size: 'lg',
@@ -42,7 +44,7 @@ export const setsDoubleAsignar = [
     icon: 'glyph-icon simple-icon-eye m-1',
   },
   {
-    title: 'actualizar',
+    title: actions.UPDATE,
     label: 'actualizar',
     listFunction: '',
     size: 'lg',
@@ -50,7 +52,7 @@ export const setsDoubleAsignar = [
     icon: 'glyph-icon simple-icon-pencil m-1',
   },
   {
-    title: 'eliminar',
+    title: actions.DELETE,
     label: 'eliminar',
     size: 'lg',
     color: 'danger',
@@ -76,7 +78,7 @@ export const setsDoubleAsignar = [
 
 export const sets = [
   {
-    title: 'ver',
+    title: actions.READ,
     label: 'ver',
     listFunction: '',
     size: 'lg',
@@ -84,7 +86,7 @@ export const sets = [
     icon: 'glyph-icon simple-icon-eye m-1',
   },
   {
-    title: 'actualizar',
+    title: actions.UPDATE,
     label: 'actualizar',
     listFunction: '',
     size: 'lg',
@@ -92,7 +94,7 @@ export const sets = [
     icon: 'glyph-icon simple-icon-pencil m-1',
   },
   {
-    title: 'Eliminar',
+    title: actions.DELETE,
     label: 'eliminar',
     size: 'lg',
     color: 'danger',
@@ -101,12 +103,18 @@ export const sets = [
 ];
 
 export const setCreate = {
-  title: 'crear',
+  title: 'Crear',
   label: 'Crear',
   listFunction: '',
   size: 'xl',
   color: 'success',
   icon: '',
 };
+
+export const setSingleComponent = [
+  {
+    title: 'Ver',
+  },
+];
 
 export default sets;

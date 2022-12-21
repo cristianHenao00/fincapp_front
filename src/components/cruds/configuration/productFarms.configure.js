@@ -1,57 +1,41 @@
 import React from 'react';
-import FormCategory from 'components/forms/cruds/categories.crud';
-import Actions from 'components/elements/forms/actions';
+import Actions from 'components/elements/forms/components';
 import * as Sets from 'components/cruds/Buttonset';
-import { actions } from 'constants/config';
+import BuyProduct from 'components/customs/buy';
+import ImageCard from 'components/customs/image';
+import { apiUrl } from 'constants/config';
 
-const headers = [
-  'Imagen',
-  'Nombre',
-  'Categoria',
-  'Valor',
-  'Cantidad',
-  'Comprar',
-];
+const headers = [false, 'Nombre', 'Categoria', 'Valor', 'Cantidad', 'Comprar'];
 
-const accessor = ['image', 'name', 'category_name', 'value', 'amount', 'buy'];
+const accessor = [false, 'name', 'category_name', 'value', 'amount', false];
 
-const size = ['2', '2', '2', '2', '1', '3'];
+const size = ['3', '1', '2', '1', '1', '4'];
 
-const forms = [
-  (listFunction, closeFunction, cell) => {
-    return (
-      <FormCategory
-        cell={cell}
-        action={actions.READ}
-        closeFunction={closeFunction}
-        listFunction={listFunction}
-      />
-    );
+const components = [
+  (cell) => {
+    return <ImageCard path={`${apiUrl}/public/products`} cell={cell} />;
   },
-  (listFunction, closeFunction, cell) => {
-    return (
-      <FormCategory
-        cell={cell}
-        action={actions.UPDATE}
-        closeFunction={closeFunction}
-        listFunction={listFunction}
-      />
-    );
+  () => <></>,
+  () => <></>,
+  () => <></>,
+  () => <></>,
+  (cell) => {
+    return <BuyProduct cell={cell} />;
   },
 ];
 
 const actionsForm = (cell) => {
-  return <Actions sets={Sets.sets} forms={forms} cell={cell} />;
+  return <Actions sets={Sets.sets} forms={components} cell={cell} />;
 };
 
-const { sets } = Sets;
+const { setSingleComponent } = Sets;
 
 const configure = {
   accessor,
   size,
-  sets,
   headers,
-  forms,
+  sets: setSingleComponent,
+  components,
   actionsForm,
   name: 'Finca',
 };
