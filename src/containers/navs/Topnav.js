@@ -182,9 +182,6 @@ const TopNav = ({
     logoutUserAction(history);
   };
 
-  const handleReseat = () => {
-
-  };
 
   const menuButtonClick = (e, _clickCount, _conClassnames) => {
     e.preventDefault();
@@ -316,9 +313,6 @@ const TopNav = ({
               <DropdownItem>Características</DropdownItem>          
               <DropdownItem>Soporte</DropdownItem>
               <DropdownItem divider /> */}
-              <DropdownItem onClick={() => handleReseat()}>
-                Cambiar Contraseña
-              </DropdownItem>
               <DropdownItem onClick={() => handleLogout()}>
                 Cerrar Sesión
               </DropdownItem>

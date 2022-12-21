@@ -22,6 +22,7 @@ module.exports = {
   'user.forgot-password': 'Se te olvidó tu contraseña',
   'user.email': 'Email',
   'user.password': 'Contraseña',
+  'user.password-again': 'Confirmar Contraseña',
   'user.forgot-password-question': '¿Contraseña olvidada?',
   'user.fullname': 'Nombre completo',
   'user.login-button': 'INICIAR SESIÓN',
