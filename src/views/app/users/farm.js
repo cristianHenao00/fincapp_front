@@ -5,15 +5,15 @@ import configure from 'components/cruds/configuration/productFarms.configure';
 import { handlerGetData } from 'components/elements/crud/handlerServices';
 import { getFarmProducts } from 'services/farms';
 import ListView from 'components/elements/crud/listView';
-import ConfigureAction from 'components/cruds/configureAction';
 import { useParams } from 'react-router-dom';
+import ConfigureComponents from 'components/cruds/configureComponents';
 
-const Farm = ({ match, menu }) => {
+const Farm = ({ match }) => {
   const { farm_id } = useParams();
 
   const [data, setData] = useState([]);
 
-  const actions = ConfigureAction(configure, menu);
+  const component = ConfigureComponents(configure);
 
   const listFunction = async () => {
     const newData = await handlerGetData(
@@ -22,6 +22,7 @@ const Farm = ({ match, menu }) => {
       false,
       { id: parseInt(farm_id, 10) }
     );
+    console.log(newData);
     setData(newData);
   };
 
@@ -35,7 +36,7 @@ const Farm = ({ match, menu }) => {
         accessor={configure.accessor}
         size={configure.size}
         data={data}
-        actions={actions}
+        component={component}
         headers={configure.headers}
         name={configure.name}
         match={match}

@@ -182,3 +182,13 @@ export const stock = {
     valueAsNumber: { value: true, message: '' },
   },
 };
+
+export const buy = {
+  amount: {
+    required: { value: true, message: 'Debe ingresar una cantidad' },
+    valueAsNumber: { value: true, message: '' },
+    validate: {
+      isNull: (value) => !isNaN(value) || 'Debe ingresar una cantidad',
+    },
+  },
+};

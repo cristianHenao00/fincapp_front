@@ -20,7 +20,7 @@ function ListView({
   accessor,
   size,
   data,
-  actions,
+  component,
   name = '',
   match = { path: '' },
 }) {
@@ -41,7 +41,7 @@ function ListView({
               data={data[i]}
               accessor={accessor}
               size={size}
-              actions={actions}
+              component={component}
               headers={headers}
             />
           </Row>

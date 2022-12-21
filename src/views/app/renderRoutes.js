@@ -15,6 +15,8 @@ const roles = React.lazy(() => import('./admin/roles'));
 const permissions = React.lazy(() => import('./admin/permissions'));
 const categories = React.lazy(() => import('./admin/categories'));
 const products = React.lazy(() => import('./admin/products'));
+const farms_admin = React.lazy(() => import('./admin/farms'));
+const farms_farmer = React.lazy(() => import('./farmer/farms'));
 const reset_password = React.lazy(() => import('./admin/reset-password'));
 const farms = React.lazy(() => import('./farmer/farms'));
 const stock = React.lazy(() => import('./farmer/stock'));
@@ -28,6 +30,11 @@ const userHome = {
   [UserRole.farmer]: homeFarmer,
 };
 
+const userFarm = {
+  [UserRole.administrator]: farms_admin,
+  [UserRole.farmer]: farms_farmer,
+};
+
 const components = {
   home: userHome[currentUser.role],
   roles,
@@ -37,6 +44,7 @@ const components = {
   permissions,
   categories,
   products,
+  farms: userFarm[currentUser.role],
   farms,
   reset_password,
   stock,

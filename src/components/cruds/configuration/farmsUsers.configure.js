@@ -1,47 +1,50 @@
 import React from 'react';
-import FormCategory from 'components/forms/cruds/categories.crud';
-import Actions from 'components/elements/forms/actions';
+import Actions from 'components/elements/forms/components';
 import * as Sets from 'components/cruds/Buttonset';
-import { actions } from 'constants/config';
+import { NavLink } from 'react-router-dom';
+import { Button } from 'reactstrap';
+import ImageCard from 'components/customs/image';
+import { apiUrl } from 'constants/config';
+import Rating from 'components/common/Rating';
 
-const accessor = ['image', 'name', 'address', 'rating', false];
+const headers = [false, 'Finca', 'Dirección', 'Calificación', false];
 
-const size = ['25', '25', '25', '25'];
+const accessor = [false, 'name', 'address', false, false];
 
-const forms = [
-  (listFunction, closeFunction, cell) => {
-    return (
-      <FormCategory
-        cell={cell}
-        action={actions.READ}
-        closeFunction={closeFunction}
-        listFunction={listFunction}
-      />
-    );
+const size = ['3', '2', '2', '2', '3'];
+
+const components = [
+  (cell) => {
+    return <ImageCard path={`${apiUrl}/public/farms`} cell={cell} />;
   },
-  (listFunction, closeFunction, cell) => {
+  () => <></>,
+  () => <></>,
+  (cell) => <Rating total={5} rating={cell.rating} interactive={false} />,
+  (cell) => {
     return (
-      <FormCategory
-        cell={cell}
-        action={actions.UPDATE}
-        closeFunction={closeFunction}
-        listFunction={listFunction}
-      />
+      <NavLink to={`/app/public/farm_user/${cell.id}`}>
+        <Button
+          color="primary"
+          className="btn-shadow"
+          size="sm"
+          style={{ marginRight: '5px' }}
+        >
+          <i className="iconsminds-right-1" />
+        </Button>
+      </NavLink>
     );
   },
 ];
 
 const actionsForm = (cell) => {
-  return <Actions sets={Sets.sets} forms={forms} cell={cell} />;
+  return <Actions sets={Sets.sets} actions={components} cell={cell} />;
 };
-
-const { sets } = Sets;
 
 const configure = {
   accessor,
   size,
-  sets,
-  forms,
+  headers,
+  components,
   actionsForm,
   name: 'Inicio',
 };
