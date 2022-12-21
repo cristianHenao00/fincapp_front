@@ -17,6 +17,8 @@ const categories = React.lazy(() => import('./admin/categories'));
 const products = React.lazy(() => import('./admin/products'));
 const farms_admin = React.lazy(() => import('./admin/farms'));
 const farms_farmer = React.lazy(() => import('./farmer/farms'));
+const reset_password = React.lazy(() => import('./admin/reset-password'));
+const farms = React.lazy(() => import('./farmer/farms'));
 const stock = React.lazy(() => import('./farmer/stock'));
 const history = React.lazy(() => import('./users/history'));
 const cart = React.lazy(() => import('./users/carts'));
@@ -43,6 +45,8 @@ const components = {
   categories,
   products,
   farms: userFarm[currentUser.role],
+  farms,
+  reset_password,
   stock,
   history,
   cart,
