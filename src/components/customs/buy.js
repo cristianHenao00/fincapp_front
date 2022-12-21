@@ -6,6 +6,8 @@ import Input from 'components/elements/forms/input';
 import { useParams } from 'react-router-dom';
 import { buy as validation } from 'components/forms/valiadations';
 import { getCurrentUser } from 'helpers/Utils';
+import { handlerCUD } from 'components/elements/crud/handlerServices';
+import { saveOrderProducts } from 'services/orders';
 
 const idCurrentUser = getCurrentUser().id;
 
@@ -25,7 +27,11 @@ const BuyProduct = ({ cell }) => {
       id_farm: parseInt(farm_id, 10),
       id_user: idCurrentUser,
     };
-    console.log(body);
+    handlerCUD(
+      saveOrderProducts,
+      { body },
+      'Se ha agregado el producto al carrito'
+    );
   };
   return (
     <>
@@ -37,7 +43,7 @@ const BuyProduct = ({ cell }) => {
               name="amount"
               register={register}
               errors={errors}
-              vaidation={validation}
+              validation={validation}
             />
           </Col>
           <Col xs={4}>

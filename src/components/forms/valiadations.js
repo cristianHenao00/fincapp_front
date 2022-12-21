@@ -188,7 +188,7 @@ export const buy = {
     required: { value: true, message: 'Debe ingresar una cantidad' },
     valueAsNumber: { value: true, message: '' },
     validate: {
-      isNull: (value) => !isNaN(value) || 'Debe ingresar una cantidad',
+      notZero: (value) => value > 0 || 'Debe ingresar una cantidad',
     },
   },
 };

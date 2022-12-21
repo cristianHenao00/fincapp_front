@@ -10,8 +10,8 @@ export const handlerCUD = (
   service,
   props,
   msgs,
-  listFunction,
-  closeFunction,
+  listFunction = () => {},
+  closeFunction = () => {},
   reset
 ) => {
   service(props)
